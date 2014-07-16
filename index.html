@@ -1,96 +1,83 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <title>AppAdvice Upload Form</title>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fine Uploader S3 No Server Demo">
-    <meta name="author" content="Widen">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <script type="text/template" id="qq-template">
-        <div class="qq-uploader-selector qq-uploader">
-            <div class="qq-upload-button-selector qq-upload-button">
-                <div>Select Files</div>
-            </div>
-            <div class="qq-upload-drop-area-selector uploader-drop-zone">
-                <span class="drop-zone-text">Drop Files Here</span>
-                <ul class="qq-upload-list-selector qq-upload-list">
-                    <li class="file-container">
-                        <div class="qq-progress-bar-container-selector">
-                            <div class="qq-progress-bar-selector qq-progress-bar"></div>
-                        </div>
-                        <div class="file-info">
-                            <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
-                            <img class="qq-thumbnail-selector" qq-max-size="50" qq-server-scale>
-                            <span class="qq-upload-file-selector qq-upload-file"></span>
-                            <span class="qq-upload-size-selector qq-upload-size"></span>
-                        </div>
-                        <button class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</button>
-                        <button class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</button>
-                        <span class="qq-upload-status-text-selector qq-upload-status-text"></span>
-                        <a class="view-btn" target="_blank" style="display: none;">
-                            <input type="button" value="View">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <span class="qq-drop-processing-selector qq-drop-processing">
-                <span>Processing dropped files...</span>
-                <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
-            </span>
-        </div>
-    </script>
+    <title>Gaming-soon-creative-uploader by appadvice</title>
+  </head>
 
-    <script>
-        var s3DemoGlobals = {};
-    </script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Gaming-soon-creative-uploader</h1>
+        <h2>A client-side asset uploader for GamingSoon creatives.</h2>
+        <a href="https://github.com/appadvice/gaming-soon-creative-uploader" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
 
-    <link href='//fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
-    <link href="fineuploader-4.2.1.min.css" rel='stylesheet' type='text/css'>
-    <link href="custom.css" rel='stylesheet' type='text/css'>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
+<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
-    </head>
-<body>
-    <div class="wrapper">
-        <!-- Only lods the content between the "if tags" if you are not running IE9 or older -->
-        <!--[if !IE | gt IE 9]> -->
+<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-        <!-- Scripts required for this demo -->
-        <script src="//code.jquery.com/jquery-latest.js"></script>
-        <script src="s3.jquery.fineuploader-4.2.1.min.js"></script>
-        <script src="aws-sdk-glue.js"></script>
-        <script src="google-auth.js"></script>
-        <script src="fineuploader-glue.js"></script>
-        <script src="//sdk.amazonaws.com/js/aws-sdk-2.0.0-rc4.min.js"></script>
+<pre><code>$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+</code></pre>
 
-        <div class="row-fluid">
-            <div class="span4">
-                <div class="sign-in-buttons">
-                    <!-- Google sign-in button -->
-                    <div id="google-signin" class="signin-button" style="position:relative; top:18px;">
-                      <span
-                        class="g-signin"
-                        data-callback="s3GoogleOauthHandler"
-                        data-clientid="1026884566589-phgrus0dftqmmijanahpnkl37fmrqoe1.apps.googleusercontent.com"
-                        data-cookiepolicy="single_host_origin"
-                        data-requestvisibleactions="http://schemas.google.com/AddActivity"
-                        data-scope="https://www.googleapis.com/auth/plus.login"
-                        data-approvalprompt="force">
-                      </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
-        <div id="uploader"></div>
+<h3>
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
-        <!-- <![endif]-->
-        
-        <!-- Displayed in place of login buttons & uploader if the browser is IE9 or older. -->
-        <!--[if lt IE 10]>
-        <div>Sorry, this demo is only functional in modern browsers, such as IE10+, Chrome, Firefox, Opera, and Safari.</div>
-        <![endif]-->
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+
+<h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/appadvice/gaming-soon-creative-uploader/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/appadvice/gaming-soon-creative-uploader/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/appadvice/gaming-soon-creative-uploader"></a> is maintained by <a href="https://github.com/appadvice">appadvice</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-</body>
+
+  
+  </body>
 </html>
