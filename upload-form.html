@@ -1,0 +1,21 @@
+<div ng-controller="UploadFormCtrl">
+  <div fine-uploader-s3
+       style="font-size: 40px; border: 2px dashed black; padding: 10px;">
+    Drop image here
+  </div>
+
+  <br/>
+
+  <div ng-if="uploadedImg">
+    <h3>Image details:</h3>
+
+    <p>Width: {{uploadedImg.width}}</p>
+
+    <p>Height: {{uploadedImg.height}}</p>
+
+    <p>size: {{uploadedImg.size}}</p>
+
+    <h3>Preview:</h3>
+    <img ng-src="{{uploadedImg.src}}">
+  </div>
+</div>
