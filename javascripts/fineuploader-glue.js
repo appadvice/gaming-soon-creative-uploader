@@ -43,8 +43,8 @@ $(function() {
         },
         thumbnails: {
             placeholders: {
-                notAvailablePath: "not_available-generic.png",
-                waitingPath: "waiting-generic.png"
+                notAvailablePath: "images/not_available-generic.png",
+                waitingPath: "images/waiting-generic.png"
             }
         }
     })
