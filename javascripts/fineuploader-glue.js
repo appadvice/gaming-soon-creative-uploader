@@ -38,8 +38,8 @@ $(function() {
         },
         // Restrict files to 500 MB and 10 net files per session
         validation: {
-            itemLimit: 10,
-            sizeLimit: 500000000
+            itemLimit: 25,
+            sizeLimit: 1000000000
         },
         thumbnails: {
             placeholders: {
