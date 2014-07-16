@@ -16,7 +16,7 @@ $(function() {
                 setUserName(authResult.access_token);
 
                 // Get S3 credentials
-                s3DemoGlobals.assumeRoleWithWebIdentity({
+                fineUploaderGlobals.assumeRoleWithWebIdentity({
                     roleArn: "arn:aws:iam::164437588128:role/GamingSoon-Serverless-Upload-Client",
                     idToken: authResult.id_token
                 });
@@ -44,7 +44,7 @@ $(function() {
                 if (xhr.status === 200) {
                     var userName = JSON.parse(xhr.responseText).displayName;
 
-                    s3DemoGlobals.userName = userName;
+                    fineUploaderGlobals.userName = userName;
                 }
             };
 

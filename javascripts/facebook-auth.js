@@ -50,11 +50,11 @@ $(function() {
 
                         // Grab the authenticated user's name via the Graph API (for file storage)
                         FB.api("/me", function(response) {
-                            s3DemoGlobals.userName = response.name;
+                            fineUploaderGlobals.userName = response.name;
                         });
 
                         // Grab S3 credentials for the user
-                        s3DemoGlobals.assumeRoleWithWebIdentity({
+                        fineUploaderGlobals.assumeRoleWithWebIdentity({
                             idToken: response.authResponse.accessToken,
                             roleArn: "arn:aws:iam::776099607611:role/demo-s3-noserver-facebook",
                             providerId: "graph.facebook.com"

@@ -36,11 +36,11 @@ $(function() {
 
                     // Get the authenticated user's name (for file storage)
                     amazon.Login.retrieveProfile(function(response) {
-                        s3DemoGlobals.userName = response.profile.Name;
+                        fineUploaderGlobals.userName = response.profile.Name;
                     });
 
                     // Grab S3 credentials using the bearer token
-                    s3DemoGlobals.assumeRoleWithWebIdentity({
+                    fineUploaderGlobals.assumeRoleWithWebIdentity({
                         idToken: authResult.access_token,
                         roleArn: "arn:aws:iam::776099607611:role/demo-s3-noserver-amazon",
                         providerId: "www.amazon.com"

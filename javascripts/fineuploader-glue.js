@@ -7,7 +7,7 @@ $(function() {
     var bucketUrl = "https://gaming-soon-assets-upload.s3.amazonaws.com",
         updateCredentials = function(error, data) {
             if (!error) {
-                $('#uploader').fineUploaderS3("setCredentials", s3DemoGlobals.getFuCredentials(data));
+                $('#uploader').fineUploaderS3("setCredentials", fineUploaderGlobals.getFuCredentials(data));
             }
         },
         hideUploader = function() {
@@ -27,7 +27,7 @@ $(function() {
                 var filename = this.getName(id),
                     uuid = this.getUuid(id);
 
-                return qq.format("{}/{}.{}", s3DemoGlobals.userName, uuid, qq.getExtension(filename));
+                return qq.format("{}/{}.{}", fineUploaderGlobals.userName, uuid, qq.getExtension(filename));
             }
         },
         chunking: {
@@ -63,13 +63,13 @@ $(function() {
             var promise = new qq.Promise();
 
             // Grab new credentials
-            s3DemoGlobals.assumeRoleWithWebIdentity({
+            fineUploaderGlobals.assumeRoleWithWebIdentity({
                 callback: function(error, data) {
                     if (error) {
                         promise.failure("Failed to assume role");
                     }
                     else {
-                        promise.success(s3DemoGlobals.getFuCredentials(data));
+                        promise.success(fineUploaderGlobals.getFuCredentials(data));
                     }
                 }
             });
@@ -77,7 +77,7 @@ $(function() {
             return promise;
         });
 
-    s3DemoGlobals.updateCredentials = updateCredentials;
+    fineUploaderGlobals.updateCredentials = updateCredentials;
 
     $(document).on("tokenExpired.s3Demo", hideUploader);
     $(document).on("tokenReceived.s3Demo", function() {
