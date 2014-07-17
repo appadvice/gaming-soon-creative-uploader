@@ -11,6 +11,7 @@ $(function() {
             }
         },
         hideUploader = function() {
+            $(".uploader-label").hide();
             $(".uploader").hide();
         };
 
@@ -85,8 +86,9 @@ $(function() {
     fineUploaderGlobals.updateCredentials = updateCredentials;
 
     $(document).on("tokenExpired.s3Demo", hideUploader);
-    $(document).on("tokenReceived.s3Demo", function() {
-        $(".uploader").show();
+    $(document).on("tokenReceived.s3Demo", function() { 
+       $(".uploader-label").show(); 
+       $(".uploader").show();
     });
     $(document).trigger("tokenExpired.s3Demo");
 });
