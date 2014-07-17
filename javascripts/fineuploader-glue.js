@@ -7,16 +7,20 @@ $(function() {
     var bucketUrl = "https://gaming-soon-assets-upload.s3.amazonaws.com",
         updateCredentials = function(error, data) {
             if (!error) {
-                $('#uploader').fineUploaderS3("setCredentials", fineUploaderGlobals.getFuCredentials(data));
+                $('.uploader').fineUploaderS3("setCredentials", fineUploaderGlobals.getFuCredentials(data));
             }
         },
         hideUploader = function() {
-            $("#uploader").hide();
+            $(".uploader").hide();
         };
 
-    $("#uploader").fineUploaderS3({
+    $(".uploader").fineUploaderS3({
+        debug: true, // optional debug
         request: {
             endpoint: bucketUrl
+        },
+        retry: {
+         enableAuto: false // defaults to false
         },
         objectProperties: {
             // Since we want all items to be publicly accessible w/out a server to return a signed URL
@@ -81,7 +85,7 @@ $(function() {
 
     $(document).on("tokenExpired.s3Demo", hideUploader);
     $(document).on("tokenReceived.s3Demo", function() {
-        $("#uploader").show();
+        $(".uploader").show();
     });
     $(document).trigger("tokenExpired.s3Demo");
 });
