@@ -29,9 +29,10 @@ $(function() {
             // The key for each file will follow this format: {USER_NAME}/{UUID}.{FILE_EXTENSION}
             key: function(id) {
                 var filename = this.getName(id),
-                    uuid = this.getUuid(id);
+                    uuid = this.getUuid(id),
+                    dateString = (new Date()).toISOString().split('T')[0].replace(/-/g,"/"); // Date in format "2014/07/17";
 
-                return qq.format("{}/{}.{}", fineUploaderGlobals.userName, uuid, qq.getExtension(filename));
+                return qq.format("uploads/{}/{}/{}-{}.{}", dateString,fineUploaderGlobals.userName, uuid,filename, qq.getExtension(filename));
             }
         },
         chunking: {
