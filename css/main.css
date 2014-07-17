@@ -319,6 +319,17 @@ nav > a {
   position: relative;
   top: -120px;
 }
+.video-poster {
+  position: relative;
+  z-index: 2;
+  width: 200px;
+  height: 296px;
+  background-color: #ccc;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 .poster {
   position: relative;
   z-index: 2;
