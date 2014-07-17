@@ -33,10 +33,11 @@
       </div>
     </div>
     <div class="main-content clearfix">
-      <div id="undefined-sticky-wrapper" class="pull-left poster-wrapper" style="height: 296px;">
-        <video class="pull-left video-poster" preload="auto" style="background-image: url('images/poster.jpg')"  src="images/poster_video.mov" width="200" height="296"autoplay="autoplay" loop muted></video>
+      <div class="pull-left poster">
+        <video id="video1" width="200" height="296" autoplay loop>
+          <source src="videos/Back_to_Bed_poster.mp4" type="video/mp4">
+        </video>
       </div>
-      
       <div class="pull-left description">
         <p>In Back to Bed you have to guide the sleepwalker Bob from his sleep inducing office to the safety of his bed
           by
@@ -115,25 +116,37 @@
 <script type="text/javascript" src="js/color-thief.js"></script>
 
 <script>
+
+  var mainbottom;
+
   $(window).load(function () {
     $(".poster").sticky({ topSpacing: 0, wrapperClassName: 'pull-left poster-wrapper', topSpacing: 60 });
-  });
 
-  var mainbottom = $('.bg-poster').offset().top + $('.bg-poster').height() - 40;
+    var myVideo = document.getElementById("video1");
+
+    if (myVideo.paused)
+        myVideo.play();
+
+    mainbottom = $('.bg-poster').offset().top + $('.bg-poster').height() - Math.round($(window).scrollTop()) - 40;
+    watchDistance()
+
+  });
 
   // on scroll,
   $(window).on('scroll', function () {
+    watchDistance();
+  });
 
+  function watchDistance() {
     // we round here to reduce a little workload
     stop = Math.round($(window).scrollTop());
+
     if (stop > mainbottom) {
       $('.nav').addClass('past-main');
     } else {
       $('.nav').removeClass('past-main');
     }
-
-  });
-
+  }
 
 </script>
 
