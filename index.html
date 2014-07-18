@@ -24,21 +24,30 @@
 <section>
   <div class="full-width bg-poster" style="background-image: url('images/horizontal-poster.jpg')">
     <button class="play-btn"><i class="fa fa-play"></i></button>
+    <div class="video-wrapper opaque">
+      <button class="close-btn"><i class="fa fa-times"></i></button>
+      <video id="video2" width="800" height="450" controls>
+        <source src="videos/Back_to_Bed_trailer.mp4" type="video/mp4">
+        Your browser doesn't support html5 videos.
+      </video>
+    </div>
+    <div class="video-bg opaque"></div>
   </div>
 
-  <div class="main-wrapper">
-    <div class="full-width title-wrapper">
-      <div class="title">
-        <h1 class="italic">Back To Bed</h1>
-      </div>
+  <div class="full-width title-wrapper clearfix">
+    <div class="title">
+      <h1 class="italic">Back To Bed</h1>
     </div>
+  </div>
+  <div class="main-wrapper">
     <div class="main-content clearfix">
       <div class="pull-left poster">
         <video id="video1" width="200" height="296" autoplay loop>
           <source src="videos/Back_to_Bed_poster.mp4" type="video/mp4">
+          <img width="200" height="296" src="images/poster.jpg">
         </video>
       </div>
-      <div class="pull-left description">
+      <div class="pull-right description">
         <p>In Back to Bed you have to guide the sleepwalker Bob from his sleep inducing office to the safety of his bed
           by
           controlling his subconscious guardian Subob, whose job it is to both guide and protect the sleepwalking
@@ -120,13 +129,16 @@
   var mainbottom;
 
   $(window).load(function () {
-    $(".poster").sticky({ topSpacing: 0, wrapperClassName: 'pull-left poster-wrapper', topSpacing: 60 });
 
+    // make the poster stick to the top
+    $(".poster").sticky({ topSpacing: 180, wrapperClassName: 'pull-left poster-wrapper' });
+
+    // autoplay doesnt work because of sticky injects a wrapper around .poster, so its needed to start here
     var myVideo = document.getElementById("video1");
-
     if (myVideo.paused)
-        myVideo.play();
+      myVideo.play();
 
+    // count how far is the bottom of .bg-poster which is fixed, thus we need to extract $(window).scrollTop()
     mainbottom = $('.bg-poster').offset().top + $('.bg-poster').height() - Math.round($(window).scrollTop()) - 40;
     watchDistance()
 
@@ -137,6 +149,52 @@
     watchDistance();
   });
 
+  // click on play
+  $(document).on('click', '.play-btn', function () {
+    openVideo()
+  });
+
+  // click on close
+  $(document).on('click', '.close-btn', function () {
+    closeVideo()
+  });
+
+  document.getElementById('video2').addEventListener('ended', myHandler, false);
+  function myHandler(e) {
+    if (!e) {
+      e = window.event;
+    }
+    // What you want to do after the event
+    closeVideo()
+  }
+
+  // open the video
+  function openVideo() {
+    $('.play-btn').addClass('animate-out');
+    $('.poster').addClass('down');
+    $('.title-wrapper').addClass('down');
+    $('.video-wrapper').removeClass('opaque');
+    $('.video-bg').removeClass('opaque');
+
+    var myVideo = document.getElementById("video2");
+    if (myVideo.paused)
+      myVideo.play();
+  }
+
+  // close the video
+  function closeVideo() {
+    $('.play-btn').removeClass('animate-out');
+    $('.poster').removeClass('down');
+    $('.title-wrapper').removeClass('down');
+    $('.video-wrapper').addClass('opaque');
+    $('.video-bg').addClass('opaque');
+
+    var myVideo = document.getElementById("video2");
+    if (myVideo.played)
+      myVideo.pause();
+  }
+
+  // watch if we scrolled more than the bottom of .bg-poster
   function watchDistance() {
     // we round here to reduce a little workload
     stop = Math.round($(window).scrollTop());
