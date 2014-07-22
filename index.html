@@ -219,8 +219,8 @@
 
 
   // click on close
-  $(document).on('click', '.close-btn', function () {
-    closeVideo()
+  $('.close-btn').bind("click touchstart", function() {
+    closeVideo();
   });
 
   document.getElementById('video2').addEventListener('ended', myHandler, false);
