@@ -14,145 +14,209 @@
 </head>
 <body>
 
-<nav class="full-width nav">
-  <div class="nav-bg"></div>
-  <a class="logo italic" href="#">GamingSOON</a>
-  <a class="italic" href="#">Latest Trailers</a>
-  <a class="italic" href="#">Now Gaming</a>
-  <a class="italic pull-right" href="#">Get App</a>
-</nav>
-<section>
-  <div class="full-width bg-poster" style="background-image: url('images/horizontal-poster.jpg')">
-    <button class="play-btn"><i class="fa fa-play"></i></button>
-    <div class="video-wrapper opaque">
-      <button class="close-btn"><i class="fa fa-times"></i></button>
-      <video id="video2" width="800" height="450" controls>
-        <source src="videos/Back_to_Bed_trailer.mp4" type="video/mp4">
-        Your browser doesn't support html5 videos.
-      </video>
+<div class="head-wrapper clearfix">
+
+  <div class="bg-wrapper">
+    <button class="nav-btn left"><i class="fa fa-chevron-left"></i></button>
+    <button class="nav-btn right"><i class="fa fa-chevron-right"></i></button>
+    <div class="main-bg move-l" style="background-image: url(images/horizontal-poster.jpg)"></div>
+    <div class="prev-bg move-l" style="background-image: url(images/prev-bg.jpg)"></div>
+    <div class="next-bg move-l" style="background-image: url(images/next-bg.jpg)"></div>
+    <div class="stats-wrapper move-s">
+      <div class="stat-cell">
+        <span class="big">Genre</span>
+      </div>
+      <div class="stat-cell">
+        <a><i class="fa fa-tablet"></i> <span class="small">iPad</span></a>
+      </div>
+      <div class="stat-cell">
+        <span class="big">iOS 7</span>
+      </div>
+      <div class="stat-cell">
+        <a href="#"><i class="fa fa-globe"></i> <span class="small">website</span></a>
+      </div>
+      <div class="stat-cell">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+      <div class="stat-cell get-app">
+        <a href="#"><span class="big">Get app</span> <i class="fa fa-angle-right"></i></a>
+      </div>
     </div>
-    <div class="video-bg opaque"></div>
+    <div class="poster-wrapper move-s">
+      <video src="videos/Back_to_Bed_poster.mp4" id="video1" poster="images/poster.jpg" autoplay loop></video>
+    </div>
+    <div class="dark-bg opaque"></div>
   </div>
 
-  <div class="full-width title-wrapper clearfix">
+  <div class="nav-wrapper clearfix">
+    <div class="menu-bar clearfix">
+      <div class="main-menu pull-left">
+        <a class="logo italic" href="#">GamingSOON</a>
+        <a class="italic" href="#">Latest Trailers</a>
+        <a class="italic" href="#">Now Gaming</a>
+      </div>
+      <div class="social pull-right text-right clearfix">
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="breadcrumb pull-left">
+      <a href="#">Home</a> <i class="fa fa-angle-right"></i> <a href="#">Category</a> <i class="fa fa-angle-right"></i>
+      <a href="#">Game</a>
+    </div>
+  </div>
+
+  <div class="video-wrapper opaque">
+    <button class="close-btn"><i class="fa fa-times"></i></button>
+    <video id="video2" controls>
+      <source src="videos/Back_to_Bed_trailer.mp4" type="video/mp4">
+      <source src="videos/Back_to_Bed_trailer.m3u8">
+      Your browser doesn't support html5 videos.
+    </video>
+  </div>
+
+  <button class="play-btn">
+    <span class="play-btn-inside-wrapper">
+      <span>watch trailer</span>
+      <i class="fa fa-play"></i>
+    </span>
+  </button>
+
+
+</div>
+
+<div class="main-wrapper clearfix">
+
+  <div class="content-wrapper-left">
     <div class="title">
-      <h1 class="italic">Back To Bed</h1>
-    </div>
-  </div>
-  <div class="main-wrapper">
-    <div class="main-content clearfix">
-      <div class="pull-left poster">
-        <video id="video1" width="200" height="296" autoplay loop>
-          <source src="videos/Back_to_Bed_poster.mp4" type="video/mp4">
-          <img width="200" height="296" src="images/poster.jpg">
-        </video>
-      </div>
-      <div class="pull-right description">
-        <p>In Back to Bed you have to guide the sleepwalker Bob from his sleep inducing office to the safety of his bed
-          by
-          controlling his subconscious guardian Subob, whose job it is to both guide and protect the sleepwalking
-          Bob.</p>
+      <h1>Back to Bed</h1>
 
-        <p>The pair will travel through a surreal and painting like world where the boundaries between Bob’s dream and
-          reality have vanished, but where there are still real world dangers that threaten the sleepwalker. Ever
-          vigilant
-          Subob must now guide Bob around dangers and back to bed.</p>
-        <ul>
-          <li><b>Unique surreal and artistic game universe:</b> A dream universe that mixes elements from the real world
-            and the dream world to create something unique.
-          </li>
-          <li><b>Isometric puzzle levels:</b> Navigate detailed 3D levels and use elements of the level to create a safe
-            path and avoid dangers.
-          </li>
-          <li><b>Two characters as one:</b> Play as the embodied subconscious trying to save its own sleeping body by
-            getting it to the safety of the bed.
-          </li>
-          <li><b>Picturesque visual style:</b> Discover the feeling of playing in a painting inspired by surreal art and
-            impossible shapes
-          </li>
-        </ul>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies justo nulla, non venenatis mauris
-          laoreet in. Curabitur quis feugiat dui. Pellentesque egestas laoreet nunc, a condimentum orci vestibulum eu.
-          Praesent sed quam nec tellus pretium fringilla eget eu leo. Nullam sit amet cursus dui, id euismod risus.
-          Nullam
-          iaculis enim nec nunc eleifend pharetra. Donec tempor volutpat arcu in viverra. Ut quis leo scelerisque,
-          ultrices ipsum sed, egestas est. In id nulla in elit sagittis ullamcorper a pharetra nibh. Mauris ut mauris in
-          leo laoreet tristique. Donec elementum, dolor vitae placerat ullamcorper, odio tellus suscipit elit, at
-          lobortis
-          purus lorem vel nibh. Praesent ornare tristique lorem, nec rhoncus nisi aliquet quis. Vivamus tellus massa,
-          congue ut fermentum sed, venenatis et odio. Nam mauris eros, volutpat vitae ultrices at, aliquam a purus.
-          Maecenas pulvinar elit in tempor varius. Sed sollicitudin at lacus nec gravida.
-        </p>
-
-        <p>
-          Proin dapibus dolor purus, non tempor nunc ornare at. Mauris eget venenatis eros. Integer sit amet lectus
-          ipsum.
-          Suspendisse porttitor diam sem, sed consequat massa luctus convallis. Vivamus adipiscing consequat ultricies.
-          Fusce blandit tortor vel lorem tristique sollicitudin. Ut nec ligula nulla. Nullam tempus urna purus, id
-          rutrum
-          ante sollicitudin quis.
-        </p>
-
-        <p>
-          Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
-          Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
-          tortor.
-          Donec varius adipiscing sapien non ultrices. Maecenas et metus sed dolor bibendum aliquet. Lorem ipsum dolor
-          sit
-          amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
-          Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis.
-        </p>
-
-        <p>
-          Maecenas ac velit pellentesque, imperdiet lectus blandit, cursus tellus. Vivamus eu magna a nunc accumsan
-          faucibus. Ut facilisis, arcu ac pellentesque tempor, justo augue consectetur erat, vitae facilisis nisi mi ut
-          diam. Praesent eu turpis sodales, cursus eros non, molestie leo. Suspendisse laoreet tortor in consectetur
-          consequat. Aliquam vel tincidunt purus. Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Nam consectetur egestas tellus id dictum. Praesent eu commodo sem. Nulla arcu lectus,
-          molestie quis diam et, ornare cursus elit. Suspendisse ac dui vitae urna pulvinar venenatis. Quisque et
-          commodo
-          diam.
-        </p>
+      <div class="author-wrapper clearfix">
+        <div class="author-logo pull-left"><img src="images/logo.png"></div>
+        <div class="pull-left">
+          <span class="author">Bedtime Digital Games</span><br>
+          <span class="date italic">22 july, 2014 if already released</span>
+        </div>
+        <div class="author-social text-right pull-right">
+          <a href="#"><i class="fa fa-globe"></i></a>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a><br>
+          <button class="author-other">from the makers of Back to Bed <i class="fa fa-angle-down"></i></button>
+        </div>
       </div>
     </div>
+    <div class="description">
+      <p>In Back to Bed you have to guide the sleepwalker Bob from his sleep inducing office to the safety of his bed
+        by
+        controlling his subconscious guardian Subob, whose job it is to both guide and protect the sleepwalking
+        Bob.</p>
+
+      <p>The pair will travel through a surreal and painting like world where the boundaries between Bob’s dream and
+        reality have vanished, but where there are still real world dangers that threaten the sleepwalker. Ever
+        vigilant
+        Subob must now guide Bob around dangers and back to bed.</p>
+      <ul>
+        <li><b>Unique surreal and artistic game universe:</b> A dream universe that mixes elements from the real world
+          and the dream world to create something unique.
+        </li>
+        <li><b>Isometric puzzle levels:</b> Navigate detailed 3D levels and use elements of the level to create a safe
+          path and avoid dangers.
+        </li>
+        <li><b>Two characters as one:</b> Play as the embodied subconscious trying to save its own sleeping body by
+          getting it to the safety of the bed.
+        </li>
+        <li><b>Picturesque visual style:</b> Discover the feeling of playing in a painting inspired by surreal art and
+          impossible shapes
+        </li>
+      </ul>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies justo nulla, non venenatis mauris
+        laoreet in. Curabitur quis feugiat dui. Pellentesque egestas laoreet nunc, a condimentum orci vestibulum eu.
+        Praesent sed quam nec tellus pretium fringilla eget eu leo. Nullam sit amet cursus dui, id euismod risus.
+        Nullam
+        iaculis enim nec nunc eleifend pharetra. Donec tempor volutpat arcu in viverra. Ut quis leo scelerisque,
+        ultrices ipsum sed, egestas est. In id nulla in elit sagittis ullamcorper a pharetra nibh. Mauris ut mauris in
+        leo laoreet tristique. Donec elementum, dolor vitae placerat ullamcorper, odio tellus suscipit elit, at
+        lobortis
+        purus lorem vel nibh. Praesent ornare tristique lorem, nec rhoncus nisi aliquet quis. Vivamus tellus massa,
+        congue ut fermentum sed, venenatis et odio. Nam mauris eros, volutpat vitae ultrices at, aliquam a purus.
+        Maecenas pulvinar elit in tempor varius. Sed sollicitudin at lacus nec gravida.
+      </p>
+
+      <p>
+        Proin dapibus dolor purus, non tempor nunc ornare at. Mauris eget venenatis eros. Integer sit amet lectus
+        ipsum.
+        Suspendisse porttitor diam sem, sed consequat massa luctus convallis. Vivamus adipiscing consequat ultricies.
+        Fusce blandit tortor vel lorem tristique sollicitudin. Ut nec ligula nulla. Nullam tempus urna purus, id
+        rutrum
+        ante sollicitudin quis.
+      </p>
+
+      <p>
+        Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
+        Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
+        tortor.
+        Donec varius adipiscing sapien non ultrices. Maecenas et metus sed dolor bibendum aliquet. Lorem ipsum dolor
+        sit
+        amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
+        Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis.
+      </p>
+
+      <p>
+        Maecenas ac velit pellentesque, imperdiet lectus blandit, cursus tellus. Vivamus eu magna a nunc accumsan
+        faucibus. Ut facilisis, arcu ac pellentesque tempor, justo augue consectetur erat, vitae facilisis nisi mi ut
+        diam. Praesent eu turpis sodales, cursus eros non, molestie leo. Suspendisse laoreet tortor in consectetur
+        consequat. Aliquam vel tincidunt purus. Pellentesque habitant morbi tristique senectus et netus et malesuada
+        fames ac turpis egestas. Nam consectetur egestas tellus id dictum. Praesent eu commodo sem. Nulla arcu lectus,
+        molestie quis diam et, ornare cursus elit. Suspendisse ac dui vitae urna pulvinar venenatis. Quisque et
+        commodo
+        diam.
+      </p>
+    </div>
+    <div class="bordered-box">
+      <h3>About the author</h3>
+      <p>
+        Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
+        Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
+        tortor.
+        Donec varius adipiscing sapien non ultrices. Maecenas et metus sed dolor bibendum aliquet. Lorem ipsum dolor
+        sit
+        amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
+        Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis.
+      </p>
+    </div>
   </div>
 
-</section>
+  <div class="content-wrapper-right">
+
+    <div class="social-wrapper clearfix">
+      <div class="social-cell">
+        <a href="#"><i class="fa fa-thumbs-up"></i> 1.102</a>
+        <a href="#"><i class="fa fa-thumbs-down"></i> 12</a>
+        <a href="#" class="pull-right"><i class="fa fa-share"></i></a>
+      </div>
+    </div>
+
+    <div class="release">
+      <span class="release-text">release date</span><br>
+      <span class="release-date">22 october, 2015</span>
+    </div>
+
+  </div>
+
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.sticky.js"></script>
-<script type="text/javascript" src="js/color-thief.js"></script>
 
 <script>
 
-  var mainbottom;
-
-  $(window).load(function () {
-
-    // make the poster stick to the top
-    $(".poster").sticky({ topSpacing: 180, wrapperClassName: 'pull-left poster-wrapper' });
-
-    // autoplay doesnt work because of sticky injects a wrapper around .poster, so its needed to start here
-    var myVideo = document.getElementById("video1");
-    if (myVideo.paused)
-      myVideo.play();
-
-    // count how far is the bottom of .bg-poster which is fixed, thus we need to extract $(window).scrollTop()
-    mainbottom = $('.bg-poster').offset().top + $('.bg-poster').height() - Math.round($(window).scrollTop()) - 40;
-    watchDistance()
-
-  });
-
-  // on scroll,
-  $(window).on('scroll', function () {
-    watchDistance();
-  });
-
   // click on play
-  $(document).on('click', '.play-btn', function () {
-    openVideo()
+  $('.play-btn').bind("click touchstart", function() {
+    openVideo();
   });
+
 
   // click on close
   $(document).on('click', '.close-btn', function () {
@@ -171,10 +235,9 @@
   // open the video
   function openVideo() {
     $('.play-btn').addClass('animate-out');
-    $('.poster').addClass('down');
-    $('.title-wrapper').addClass('down');
+    $('.poster-wrapper').addClass('go-out');
     $('.video-wrapper').removeClass('opaque');
-    $('.video-bg').removeClass('opaque');
+    $('.dark-bg').removeClass('opaque');
 
     var myVideo = document.getElementById("video2");
     if (myVideo.paused)
@@ -184,26 +247,13 @@
   // close the video
   function closeVideo() {
     $('.play-btn').removeClass('animate-out');
-    $('.poster').removeClass('down');
-    $('.title-wrapper').removeClass('down');
+    $('.poster-wrapper').removeClass('go-out');
     $('.video-wrapper').addClass('opaque');
-    $('.video-bg').addClass('opaque');
+    $('.dark-bg').addClass('opaque');
 
     var myVideo = document.getElementById("video2");
     if (myVideo.played)
       myVideo.pause();
-  }
-
-  // watch if we scrolled more than the bottom of .bg-poster
-  function watchDistance() {
-    // we round here to reduce a little workload
-    stop = Math.round($(window).scrollTop());
-
-    if (stop > mainbottom) {
-      $('.nav').addClass('past-main');
-    } else {
-      $('.nav').removeClass('past-main');
-    }
   }
 
 </script>
