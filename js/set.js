@@ -31,8 +31,8 @@ $(document).ready(function() {
   // open the trailer
   function openVideo() {
     $(".play-btn").addClass("animate-out");
-    $(".poster-wrapper").addClass("go-out");
-    $(".video-wrapper").removeClass("hidden");
+    $(".poster-wrapper").addClass("go-out-left");
+    $(".video-wrapper").removeClass("go-out-top opaque");
     $(".dark-bg").removeClass("opaque");
 
     var myVideo = document.getElementById("video2");
@@ -43,8 +43,8 @@ $(document).ready(function() {
   // close the trailer
   function closeVideo() {
     $(".play-btn").removeClass("animate-out");
-    $(".poster-wrapper").removeClass("go-out");
-    $(".video-wrapper").addClass("hidden");
+    $(".poster-wrapper").removeClass("go-out-left");
+    $(".video-wrapper").addClass("go-out-top opaque");
     $(".dark-bg").addClass("opaque");
 
     var myVideo = document.getElementById("video2");
