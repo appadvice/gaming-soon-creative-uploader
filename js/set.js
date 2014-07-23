@@ -10,6 +10,11 @@ $(document).ready(function() {
     closeVideo();
   });
 
+  // click video background
+  $(".dark-bg").bind("click touchstart", function() {
+    closeVideo();
+  });
+
   // close the video if the trailer ends
   document.getElementById("video2").addEventListener("ended", trailerHandler, false);
   function trailerHandler(e) {
