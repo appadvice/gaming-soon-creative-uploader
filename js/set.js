@@ -44,6 +44,7 @@ $(document).ready(function() {
     $(".poster-wrapper").addClass("go-out-left");
     $(".video-wrapper").removeClass("go-out-top opaque");
     $(".dark-bg").removeClass("opaque");
+    $("body").addClass("darken");
 
     var myVideo = document.getElementById("video2");
     if (myVideo.paused)
@@ -56,6 +57,7 @@ $(document).ready(function() {
     $(".poster-wrapper").removeClass("go-out-left");
     $(".video-wrapper").addClass("go-out-top opaque");
     $(".dark-bg").addClass("opaque");
+    $("body").removeClass("darken");
 
     var myVideo = document.getElementById("video2");
     if (myVideo.played)
