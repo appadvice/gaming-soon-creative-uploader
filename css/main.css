@@ -490,12 +490,92 @@ BASIC LAYOUT
   transform: scale(0.1);
   opacity: 0;
 }
+.more-video-wrapper {
+  position: relative;
+  z-index: 1;
+  background-color: #222;
+  text-align: center;
+  padding: 20px 100px 0 100px;
+  height: 180px;
+}
+.more-video {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 5px;
+  width: 180px;
+  position: relative;
+}
+.more-video > .video {
+  background-color: #000;
+  width: 180px;
+  height: 120px;
+  display: block;
+}
+.more-video > .video-play {
+  color: rgba(255,255,255,0.75);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 1px rgba(255,255,255,0.75);
+  text-align: center;
+  line-height: 48px;
+  outline: none;
+  background-color: rgba(255,255,255,0.2);
+  font-size: 20px;
+  padding-left: 4px;
+  top: 35px;
+  left: 65px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.more-video > .video-play:hover,
+.more-video > .video-play:focus {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.more-video > .video-title {
+  color: #666;
+}
+.more-video-closed {
+  -webkit-transform: translateY(-180px);
+  transform: translateY(-180px);
+}
+.more-video-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #222;
+  color: #aaa;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 3px 10px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.more-video-btn i {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.more-video-closed .more-video-btn i {
+  -webkit-transform: scale(-1);
+  transform: scale(-1);
+}
 .main-wrapper {
   padding: 0 100px 50px 100px;
+  background-color: #e9e9e9;
+  position: relative;
+  z-index: 5;
+  border-top: solid 1px #222;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .content-wrapper-left {
   width: 65%;
   float: left;
+  position: relative;
 }
 .content-wrapper-right {
   width: 35%;
@@ -562,20 +642,23 @@ BASIC LAYOUT
   font-weight: 400;
   font-size: 24px;
 }
-.social-cell {
-  line-height: 70px;
-  padding: 0 10px;
-  font-size: 16px;
+.rating-wrapper {
+  margin: 20px 0;
 }
-.social-cell > a,
-.social-cell > span{
-  padding: 0 10px;
+.rating-bar-line {
+  height: 10px;
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: #ccc;
 }
-.social-cell > a,
-.social-cell > i,
-.social-cell > span {
-  display: inline-block;
-  vertical-align: middle;
+.rating-bar-fill {
+  display: block;
+  width: 90%;
+  height: 100%;
+  background-color: #09f;
+}
+.rating-info {
+
 }
 .video-wrapper {
   position: relative;

@@ -15,6 +15,11 @@ $(document).ready(function() {
     closeVideo();
   });
 
+  // click more videos
+  $(".more-video-btn").bind("click touchstart", function() {
+    moreVideos();
+  });
+
   // close the video if the trailer ends
   document.getElementById("video2").addEventListener("ended", trailerHandler, false);
   function trailerHandler(e) {
@@ -62,6 +67,16 @@ $(document).ready(function() {
     var myVideo = document.getElementById("video1");
     if (myVideo.paused)
       myVideo.play();
+  }
+
+  // open more videos
+  function moreVideos() {
+    var element = $(".main-wrapper");
+    if (element.hasClass("more-video-closed")) {
+      $(element).removeClass("more-video-closed");
+    } else {
+      $(element).addClass("more-video-closed");
+    }
   }
 
 });
