@@ -307,6 +307,7 @@ BASIC LAYOUT
 }
 .poster-wrapper {
   position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 100px;
   width: 302px;
@@ -444,7 +445,7 @@ BASIC LAYOUT
   overflow: hidden;
   background-color: rgba(0,0,0,0.5);
   position: absolute;
-  z-index: 10;
+  z-index: 20;
   left: calc(50% - 60px);
   left: -webkit-calc(50% - 60px);
   top: calc(50% - 20px);

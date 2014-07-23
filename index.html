@@ -44,7 +44,9 @@
       </div>
     </div>
     <div class="poster-wrapper move-s">
-      <video src="videos/Back_to_Bed_poster.mp4" id="video1" poster="images/poster.jpg" autoplay loop></video>
+      <video id="video1" poster="images/poster.jpg" preload autoplay>
+        <source src="videos/Back_to_Bed_poster.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="dark-bg opaque"></div>
   </div>
@@ -68,11 +70,10 @@
     </div>
   </div>
 
-  <div class="video-wrapper opaque">
+  <div class="video-wrapper hidden">
     <button class="close-btn"><i class="fa fa-times"></i></button>
-    <video id="video2" controls>
+    <video id="video2" preload controls>
       <source src="videos/Back_to_Bed_trailer.mp4" type="video/mp4">
-      <source src="videos/Back_to_Bed_trailer.m3u8">
       Your browser doesn't support html5 videos.
     </video>
   </div>
@@ -209,54 +210,7 @@
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<script>
-
-  // click on play
-  $('.play-btn').bind("click touchstart", function() {
-    openVideo();
-  });
-
-
-  // click on close
-  $('.close-btn').bind("click touchstart", function() {
-    closeVideo();
-  });
-
-  document.getElementById('video2').addEventListener('ended', myHandler, false);
-  function myHandler(e) {
-    if (!e) {
-      e = window.event;
-    }
-    // What you want to do after the event
-    closeVideo()
-  }
-
-  // open the video
-  function openVideo() {
-    $('.play-btn').addClass('animate-out');
-    $('.poster-wrapper').addClass('go-out');
-    $('.video-wrapper').removeClass('opaque');
-    $('.dark-bg').removeClass('opaque');
-
-    var myVideo = document.getElementById("video2");
-    if (myVideo.paused)
-      myVideo.play();
-  }
-
-  // close the video
-  function closeVideo() {
-    $('.play-btn').removeClass('animate-out');
-    $('.poster-wrapper').removeClass('go-out');
-    $('.video-wrapper').addClass('opaque');
-    $('.dark-bg').addClass('opaque');
-
-    var myVideo = document.getElementById("video2");
-    if (myVideo.played)
-      myVideo.pause();
-  }
-
-</script>
+<script src="js/set.js"></script>
 
 </body>
 </html>
