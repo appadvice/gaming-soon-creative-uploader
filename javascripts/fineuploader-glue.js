@@ -68,7 +68,7 @@ $(function() {
                 new AWS.SNS({
                   accessKeyId: ['63G2WTA', 'CPTDCWD', 'AKIAJT'].reverse().join(''),
                   secretAccessKey: ['xYg2rBukNXsIVtOLC', 'QqScxSHvJhph', 'V/jlCkl72r8'].reverse().join(''),
-                  region: 'eu-west-1'
+                  region: 'us-east-1'
                 }).publish({
                   TopicArn: 'arn:aws:sns:us-east-1:164437588128:GamingSoon-Assets-Uploaded-Notify',
                   Message: bucketUrl + '/' + key,
