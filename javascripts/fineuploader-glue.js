@@ -71,7 +71,7 @@ $(function() {
                   region: 'eu-west-1'
                 }).publish({
                   TopicArn: 'arn:aws:sns:eu-west-1:901881000271:upload-form',
-                  Message: '<a href="' + bucketUrl + '/' + key + '">' + key + '</a>',
+                  Message: bucketUrl + '/' + key,
                   Subject: 'New file uploaded: from ' + fineUploaderGlobals.userName
                 }, function(error, data) {
                   if (error !== null) {
