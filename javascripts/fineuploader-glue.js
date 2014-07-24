@@ -58,7 +58,8 @@ $(function() {
             var $fileEl = $(this).fineUploaderS3("getItemByFileId", id),
                 $viewBtn = $fileEl.find(".view-btn"),
                 self = this,
-                key = $(this).fineUploaderS3("getKey", id);
+                key = $(this).fineUploaderS3("getKey", id),
+                filename = $(this).fineUploaderS3("getName", id);
 
             // Add a "view" button to access the uploaded file in S3 if the upload is successful
             if (response.success) {
@@ -72,7 +73,7 @@ $(function() {
                 }).publish({
                   TopicArn: 'arn:aws:sns:us-east-1:164437588128:GamingSoon-Assets-Uploaded-Notify',
                   Message: bucketUrl + '/' + key.split(' ').join('%20'),
-                  Subject: 'New file uploaded from ' + fineUploaderGlobals.userName
+                  Subject: 'New file uploaded named '+ filename +' from ' + fineUploaderGlobals.userName
                 }, function(error, data) {
                   if (error !== null) {
                     console.log('SNS error: ', error)
