@@ -72,7 +72,7 @@ $(function() {
                 }).publish({
                   TopicArn: 'arn:aws:sns:eu-west-1:901881000271:upload-form',
                   Message: bucketUrl + '/' + key,
-                  Subject: 'New file uploaded: from ' + $(this).fineUploaderS3('getName', id)
+                  Subject: 'New file uploaded: from ' + fineUploaderGlobals.userName
                 }, function(error, data) {
                   if (error !== null) {
                     console.log('SNS error: ', error)
