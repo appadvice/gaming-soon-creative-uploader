@@ -59,7 +59,8 @@ $(function() {
                 $viewBtn = $fileEl.find(".view-btn"),
                 self = this,
                 key = $(this).fineUploaderS3("getKey", id),
-                filename = $(this).fineUploaderS3("getName", id);
+                filename = $(this).fineUploaderS3("getName", id)
+                project = location.search.match(/pid=(\d+)/) ? 'https://googleapps.insight.ly/Projects/Details/'+location.search.match(/pid=(\d+)/)[1] : 'Unknown';
 
             // Add a "view" button to access the uploaded file in S3 if the upload is successful
             if (response.success) {
@@ -67,6 +68,7 @@ $(function() {
                 $viewBtn.attr("href", bucketUrl + "/" + key);
                 var fileHREF = bucketUrl + '/' + key.split(' ').join('%20');
                 var messageBody = 'Uploaded By: '+ fineUploaderGlobals.userName + "\n";
+                messageBody += 'Project: '+ project + "\n";
                 messageBody += 'Filename: '+ filename + "\n";
                 messageBody += 'Link: '+ fileHREF;
                 
