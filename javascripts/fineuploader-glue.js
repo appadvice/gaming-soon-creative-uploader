@@ -65,6 +65,11 @@ $(function() {
             if (response.success) {
                 $viewBtn.show();
                 $viewBtn.attr("href", bucketUrl + "/" + key);
+                var fileHREF = bucketUrl + '/' + key.split(' ').join('%20');
+                var messageBody = 'Uploaded By: '+ fineUploaderGlobals.userName + "\n";
+                messageBody += 'Filename: '+ filename + "\n";
+                messageBody += 'Link: '+ fileHREF;
+                
 
                 new AWS.SNS({
                   accessKeyId: ['63G2WTA', 'CPTDCWD', 'AKIAJT'].reverse().join(''),
@@ -72,7 +77,7 @@ $(function() {
                   region: 'us-east-1'
                 }).publish({
                   TopicArn: 'arn:aws:sns:us-east-1:164437588128:GamingSoon-Assets-Uploaded-Notify',
-                  Message: bucketUrl + '/' + key.split(' ').join('%20'),
+                  Message: messageBody,
                   Subject: 'New file uploaded named '+ filename +' from ' + fineUploaderGlobals.userName
                 }, function(error, data) {
                   if (error !== null) {
