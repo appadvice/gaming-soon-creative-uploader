@@ -57,12 +57,27 @@ $(function() {
         .on('complete', function(event, id, name, response, xhr) {
             var $fileEl = $(this).fineUploaderS3("getItemByFileId", id),
                 $viewBtn = $fileEl.find(".view-btn"),
+                self = this,
                 key = $(this).fineUploaderS3("getKey", id);
 
             // Add a "view" button to access the uploaded file in S3 if the upload is successful
             if (response.success) {
                 $viewBtn.show();
                 $viewBtn.attr("href", bucketUrl + "/" + key);
+
+                new AWS.SNS({
+                  accessKeyId: 'AKIAJERGKNHGVQRWKKSA',
+                  secretAccessKey: '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',
+                  region: 'eu-west-1'
+                }).publish({
+                  TopicArn: 'arn:aws:sns:eu-west-1:901881000271:upload-form',
+                  Message: bucketUrl + '/' + key,
+                  Subject: 'New file uploaded from ' + this.getName(id)
+                }, function(error, data) {
+                  if (error !== null) {
+                    console.log('SNS error: ', error)
+                  }
+                })
             }
         })
         .on("credentialsExpired", function() {
