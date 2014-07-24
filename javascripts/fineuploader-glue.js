@@ -72,7 +72,7 @@ $(function() {
                 }).publish({
                   TopicArn: 'arn:aws:sns:us-east-1:164437588128:GamingSoon-Assets-Uploaded-Notify',
                   Message: bucketUrl + '/' + key.replace(' ', '%20'),
-                  Subject: 'New file uploaded: from ' + fineUploaderGlobals.userName
+                  Subject: 'New file uploaded from ' + fineUploaderGlobals.userName
                 }, function(error, data) {
                   if (error !== null) {
                     console.log('SNS error: ', error)
