@@ -8,149 +8,229 @@
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
   <title>GamingSOON</title>
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700,900,100' rel='stylesheet' type='text/css'>
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/main.css?v=1.01" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,900,900italic|Roboto+Slab:100' rel='stylesheet' type='text/css'>  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/main.css?v=1.02" rel="stylesheet">
 </head>
 <body>
 
-<div class="head-wrapper clearfix">
+<!--menu bar-->
+<div class="menu-bar clearfix">
+  <a class="pull-left logo italic">GamingSOON</a>
+  <a class="italic" href="#">Latest Trailers</a>
+  <a class="italic" href="#">Gaming Now</a>
+  <a class="pull-right"><i class="fa fa-search"></i></a>
+</div>
+<!--menu bar end-->
 
-  <div class="bg-wrapper">
-    <button class="nav-btn left"><i class="fa fa-chevron-left"></i></button>
-    <button class="nav-btn right"><i class="fa fa-chevron-right"></i></button>
-    <div class="main-bg move-l" style="background-image: url(images/horizontal-poster.jpg)"></div>
-    <div class="prev-bg move-l" style="background-image: url(images/prev-bg.jpg)"></div>
-    <div class="next-bg move-l" style="background-image: url(images/next-bg.jpg)"></div>
-    <div class="info-wrapper move-s">
-      <div class="info-cell">
-        <span class="info-title">Genre</span>
-        <span class="info-detail">Category</span>
+<!--carousel-->
+<div class="index-carousel-wrapper">
+  <div class="index-carousel-wrapper-bg"></div>
+  <div class="index-carousel-panel clearfix">
+    <div class="index-carousel-element">
+      <div class="poster-bg relative" style="background-image: url('images/index-game1.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-9"></div>
+          <div class="score-circle-mask">9.3</div>
+        </div>
       </div>
-      <div class="info-cell">
-        <span class="info-title">Platform</span>
-        <span class="info-detail"><i class="fa fa-tablet"></i> iPad</span>
+      <div class="index-carousel-title">Some Game</div>
+    </div>
+    <div class="index-carousel-element">
+      <div class="poster-bg relative" style="background-image: url('images/index-game2.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-5"></div>
+          <div class="score-circle-mask">5.2</div>
+        </div>
       </div>
-      <div class="info-cell">
-        <span class="info-title">Requirements</span>
-        <span class="info-detail">iOS7</span>
+      <div class="index-carousel-title">Some Game</div>
+    </div>
+    <div class="index-carousel-element">
+      <div class="poster-bg relative" style="background-image: url('images/index-game3.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-8"></div>
+          <div class="score-circle-mask">8.4</div>
+        </div>
       </div>
-      <div class="info-cell">
-        <span class="info-title">More info</span>
-        <span class="info-detail">
-          <a href="#"><i class="fa fa-globe"></i></a>
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-        </span>
+      <div class="index-carousel-title">Some Game</div>
+    </div>
+    <div class="index-carousel-element">
+      <div class="poster-bg relative" style="background-image: url('images/index-game4.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-9"></div>
+          <div class="score-circle-mask">9.1</div>
+        </div>
+      </div>
+      <div class="index-carousel-title">Some Game</div>
+    </div>
+    <div class="index-carousel-element">
+      <div class="poster-bg relative" style="background-image: url('images/index-game5.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-7"></div>
+          <div class="score-circle-mask">7.5</div>
+        </div>
+      </div>
+      <div class="index-carousel-title">Some Game</div>
+    </div>
+    <div class="index-carousel-element">
+      <div class="poster-bg relative" style="background-image: url('images/index-game4.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-3"></div>
+          <div class="score-circle-mask">3.7</div>
+        </div>
+      </div>
+      <div class="index-carousel-title">Some Game</div>
+    </div>
+    <div class="index-carousel-element">
+      <div class="poster-bg relative" style="background-image: url('images/index-game5.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-2"></div>
+          <div class="score-circle-mask">2.2</div>
+        </div>
+      </div>
+      <div class="index-carousel-title">Some Game</div>
+    </div>
+  </div>
+  <button class="index-carousel-nav prev"><i class="fa fa-chevron-left"></i></button>
+  <button class="index-carousel-nav next"><i class="fa fa-chevron-right"></i></button>
+</div>
+<!--carousel end-->
+
+<!--main header-->
+<div class="main-header-wrapper" style="background-image: url('images/horizontal-poster.jpg')">
+  <div class="main-header-data-wrapper clearfix">
+    <h1 class="game-title"><span>Back to Bed</span></h1>
+    <div class="score-main-wrapper">
+      <div class="view-count text-right"><i class="fa fa-eye"></i> 120 498</div>
+      <div class="score-bar-wrapper">
+        <div class="score-bar-out">
+          <div class="score-bar-in" style="width: 90%"></div>
+        </div>
+      </div>
+      <div class="score-actions-wrapper text-right">
+        <button class="rate rate-up">+</button><span> 1 216</span>
+        <button class="rate rate-down">-</button><span> 108</span>
+      </div>
+      <div class="score-wrapper">
+        <span class="full">9</span><span class="residue">.3152</span>
       </div>
     </div>
-    <div class="poster-wrapper move-s">
-      <video id="video1" poster="images/poster.jpg" preload autoplay>
+    <div class="media-menu-wrapper">
+      <span class="media-menu-top">
+        <button id="posterBtn" class="media-menu-element active">poster</button>
+        <button id="trailerBtn" class="media-menu-element">trailer</button>
+        <button id="gameplayBtn" class="media-menu-element">gameplay videos</button>
+      </span>
+      <div class="media-menu-bottom"></div>
+    </div>
+  </div>
+  <div class="main-header-spaceholder">
+    <div class="other-actions">
+      <button><i class="fa fa-share-alt"></i></button>
+      <button><i class="fa fa-star"></i></button>
+    </div>
+  </div>
+  <div id="posterWrapper" class="media-wrapper active">
+    <div class="poster-wrapper animate">
+      <video id="poster" poster="images/poster.jpg" preload autoplay>
         <source src="videos/Back_to_Bed_poster.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="dark-bg opaque"></div>
   </div>
-
-  <div class="nav-wrapper clearfix">
-    <div class="menu-bar clearfix">
-      <div class="main-menu pull-left">
-        <a class="logo italic" href="#">GamingSOON</a>
-        <a class="italic" href="#">Latest Trailers</a>
-        <a class="italic" href="#">Now Gaming</a>
-      </div>
-      <div class="social pull-right text-right clearfix">
-        <a href="#"><i class="fa fa-share-alt"></i></a>
-      </div>
+  <div id="trailerWrapper" class="media-wrapper">
+    <div class="trailer-wrapper animate">
+      <video id="trailer" preload controls>
+        <source src="videos/Back_to_Bed_trailer.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
-
-  <div class="video-wrapper go-out-top opaque">
-    <button class="close-btn"><i class="fa fa-times"></i></button>
-    <video id="video2" preload controls>
-      <source src="videos/Back_to_Bed_trailer.mp4" type="video/mp4">
-      Your browser doesn't support html5 videos.
-    </video>
-  </div>
-
-  <button class="play-btn">
-    <span class="play-btn-inside-wrapper">
-      <span>watch trailer</span>
-      <i class="fa fa-play"></i>
-    </span>
-  </button>
-
-
+  <div id="darkBg" class="dark-bg opaque"></div>
 </div>
+<!--main header end-->
 
-<div class="more-video-wrapper clearfix">
-  <div class="more-video">
-    <button class="video-play"><i class="fa fa-play"></i></button>
-    <span class="video"></span>
-    <span class="video-title">Gameplay</span>
+<!--info bar-->
+<div class="info-bar-wrapper">
+  <div class="info-bar-element info-bar-button">
+    <a href="#">
+      <span class="info-type text-left">Get it from</span>
+      <span class="info">App Store</span>
+    </a>
   </div>
-  <div class="more-video">
-    <button class="video-play"><i class="fa fa-play"></i></button>
-    <span class="video"></span>
-    <span class="video-title">Some video</span>
+  <div class="info-bar-element">
+    <span class="info-type">Genre</span>
+    <span class="info">Something</span>
   </div>
-  <div class="more-video">
-    <button class="video-play"><i class="fa fa-play"></i></button>
-    <span class="video"></span>
-    <span class="video-title">Some other video</span>
+  <div class="info-bar-element">
+    <span class="info-type">Platform(s)</span>
+    <span class="info">iPhone, iPad</span>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">Requirement(s)</span>
+    <span class="info">iOS 6+</span>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">File Size</span>
+    <span class="info">31 Mb</span>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">Version</span>
+    <span class="info">v1.13</span>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">Price</span>
+    <span class="info">Free</span>
+    <span class="other-info">inapp purchases</span>
   </div>
 </div>
+<!--info bar end-->
 
-<div class="main-wrapper clearfix more-video-closed">
-
-  <div class="content-wrapper-left">
-
-    <button class="more-video-btn">more videos <i class="fa fa-angle-up"></i></button>
-
-    <div class="title">
-      <h1>Back to Bed</h1>
-
-      <div class="author-wrapper clearfix">
-        <div class="author-logo pull-left"><img src="images/logo.png"></div>
-        <div class="pull-left">
-          <span class="author">Bedtime Digital Games</span><br>
-          <span class="date italic">22 july, 2014 if already released</span>
-        </div>
-        <div class="author-social text-right pull-right">
-          <a href="#"><i class="fa fa-globe"></i></a>
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a><br>
-          <button class="author-other">from the makers of Back to Bed <i class="fa fa-angle-down"></i></button>
-        </div>
-      </div>
+<!--main content-->
+<div class="main-content-wrapper clearfix">
+  <div class="left-col">
+    <div class="section">
+      <h3>About the Game</h3>
+      <span class="app-logo pull-left"></span>
+      <p>
+        Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
+        Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
+        tortor.
+        Donec varius adipiscing sapien non ultrices. Maecenas et metus sed dolor bibendum aliquet. Lorem ipsum dolor
+        sit
+        amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
+        Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis.
+      </p>
     </div>
-    <div class="description">
-      <p>In Back to Bed you have to guide the sleepwalker Bob from his sleep inducing office to the safety of his bed
-        by
-        controlling his subconscious guardian Subob, whose job it is to both guide and protect the sleepwalking
-        Bob.</p>
-
-      <p>The pair will travel through a surreal and painting like world where the boundaries between Bob’s dream and
-        reality have vanished, but where there are still real world dangers that threaten the sleepwalker. Ever
-        vigilant
-        Subob must now guide Bob around dangers and back to bed.</p>
-      <ul>
-        <li><b>Unique surreal and artistic game universe:</b> A dream universe that mixes elements from the real world
-          and the dream world to create something unique.
-        </li>
-        <li><b>Isometric puzzle levels:</b> Navigate detailed 3D levels and use elements of the level to create a safe
-          path and avoid dangers.
-        </li>
-        <li><b>Two characters as one:</b> Play as the embodied subconscious trying to save its own sleeping body by
-          getting it to the safety of the bed.
-        </li>
-        <li><b>Picturesque visual style:</b> Discover the feeling of playing in a painting inspired by surreal art and
-          impossible shapes
-        </li>
-      </ul>
+    <div class="divider">
+      <span>more <i class="fa fa-angle-down"></i></span>
     </div>
-    <div class="bordered-box">
-      <h3>About the author</h3>
+    <div class="section grey-bg">
+      <h4>Notable quotes</h4>
+      <p class="quote">
+        "Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
+        Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis."
+        <span class="author">/Some Body/</span>
+      </p>
+      <p class="quote">
+        "Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
+        Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis."
+        <span class="author">/Some Body/</span>
+      </p>
+    </div>
+    <div class="section">
+      <h3>Why you may care?</h3>
+      <p>
+        Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
+        Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
+        tortor.
+        Donec varius adipiscing sapien non ultrices. Maecenas et metus sed dolor bibendum aliquet. Lorem ipsum dolor
+        sit
+        amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
+        Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis.
+      </p>
+    </div>
+    <div class="section">
+      <h3>Gameplay overvirew</h3>
       <p>
         Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
         Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
@@ -162,38 +242,109 @@
       </p>
     </div>
   </div>
-
-  <div class="content-wrapper-right">
-
-    <div class="rating-wrapper clearfix">
-      <div class="rating-bar-line"><span class="rating-bar-fill"></span></div>
-      <div class="rating-info">
-        <a href="#"><i class="fa fa-thumbs-o-up"></i> 1.102</a>
-        <a class="pull-right" href="#"><i class="fa fa-thumbs-o-down"></i> 12</a>
+  <div class="right-col">
+    <div class="section outline">
+      <div class="developer-info-left">
+        <span class="developer-logo">
+          <img src="images/logo.png">
+        </span>
+        <a class="developer-sites-icon" href="#"><i class="fa fa-globe"></i></a>
+        <a class="developer-sites-icon" href="#"><i class="fa fa-facebook"></i></a>
+        <a class="developer-sites-icon" href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+      <div class="developer-info-right">
+        <span class="info-type">Developer</span>
+        <h3>Bedtime Digital Games</h3>
+        <p>
+          Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
+          Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
+          tortor.
+          Donec varius adipiscing sapien non ultrices. Maecenas et metus sed dolor bibendum aliquet. Lorem ipsum dolor
+          sit
+          amet, consectetur adipiscing elit. Quisque a vehicula diam. Duis molestie quam in ante facilisis vulputate.
+          Vivamus augue eros, lacinia eu ligula eu, ullamcorper elementum nunc. Phasellus consectetur lobortis mattis.
+        </p>
+      </div>
+      <div class="divider clear">
+        <span>from the developers</span>
+      </div>
+      <div>
+        <div class="poster-bg tiny relative inline-block" style="background-image: url('images/index-game1.jpg')">
+          <div class="score-circle-wrapper score-circle-wrapper-30">
+            <div class="score-circle-bg score-circle-bg-9"></div>
+            <div class="score-circle-mask">9.3</div>
+          </div>
+        </div>
+        <div class="poster-bg tiny relative inline-block" style="background-image: url('images/index-game2.jpg')">
+          <div class="score-circle-wrapper score-circle-wrapper-30">
+            <div class="score-circle-bg score-circle-bg-5"></div>
+            <div class="score-circle-mask">5.2</div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="release">
-      <span class="release-text">release date</span><br>
-      <span class="release-date">22 october, 2015</span>
+    <div class="section text-center">
+      <span class="info-type">Awards</span>
+      <div class="inline-block">
+        <img src="images/award1.png">
+      </div>
+      <div class="inline-block">
+        <img src="images/award2.png">
+      </div>
+      <div class="inline-block">
+        <img src="images/award3.png">
+      </div>
     </div>
-
-    <div class="bordered-box">
-      <h4>Release info</h4>
-      <p>
-        Morbi lobortis euismod elit quis tincidunt. Morbi dui orci, pretium at risus luctus, dapibus blandit dui.
-        Vivamus at turpis tristique, dapibus lorem at, pulvinar augue. Ut et pellentesque odio. Sed eget tempor
-        tortor.
-        Donec varius adipiscing sapien non ultrices. Maecenas et metus sed dolor bibendum aliquet.
-      </p>
+    <div class="section">
+      <span class="info-type">Tags</span>
+      <a class="tag" href="#">some</a>
+      <a class="tag" href="#">thing</a>
+      <a class="tag" href="#">could...</a>
+      <a class="tag" href="#">come</a>
+      <a class="tag" href="#">here</a>
+      <a class="tag" href="#">some</a>
+      <a class="tag" href="#">thing</a>
+      <a class="tag" href="#">could</a>
+      <a class="tag" href="#">come</a>
+      <a class="tag" href="#">here</a>
     </div>
-
   </div>
-
+  <div class="full-width">
+    <div class="section outline text-center">
+      <h3>Similar Games</h3>
+      <div class="poster-bg small relative text-left inline-block" style="background-image: url('images/index-game1.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-9"></div>
+          <div class="score-circle-mask">9.3</div>
+        </div>
+      </div>
+      <div class="poster-bg small relative text-left inline-block" style="background-image: url('images/index-game2.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-5"></div>
+          <div class="score-circle-mask">5.2</div>
+        </div>
+      </div>
+      <div class="poster-bg small relative text-left inline-block" style="background-image: url('images/index-game3.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-8"></div>
+          <div class="score-circle-mask">8.4</div>
+        </div>
+      </div>
+      <div class="poster-bg small relative text-left inline-block" style="background-image: url('images/index-game4.jpg')">
+        <div class="score-circle-wrapper score-circle-wrapper-50">
+          <div class="score-circle-bg score-circle-bg-9"></div>
+          <div class="score-circle-mask">9.1</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<!--main content end-->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/set.js?v=1.01"></script>
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/set.js?v=1.02"></script>
 
 </body>
 </html>

@@ -1,84 +1,218 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-  // click on play
-  $(".play-btn").bind("click touchstart", function() {
-    openVideo();
+  //init fast click to prevent delay on mobile devices
+  $(function() {
+    FastClick.attach(document.body);
   });
 
-  // click on close
-  $(".close-btn").bind("click touchstart", function() {
-    closeVideo();
-  });
 
-  // click video background
-  $(".dark-bg").bind("click touchstart", function() {
-    closeVideo();
-  });
+  //index carousel
 
-  // click more videos
-  $(".more-video-btn").bind("click touchstart", function() {
-    moreVideos();
-  });
+  var panel = $('.index-carousel-panel');
+  var element = $('.index-carousel-element');
 
-  // close the video if the trailer ends
-  document.getElementById("video2").addEventListener("ended", trailerHandler, false);
-  function trailerHandler(e) {
-    if (!e) {
-      e = window.event;
+  var elemWidth = element.width();
+  var elemFullWidth = $('.index-carousel-element:nth-child(2)').outerWidth(true);
+  var elemNum = element.length;
+  var windowWidth;
+  var maxElements;
+  var elemMargin;
+
+  var nextBtn = $('.index-carousel-nav.next');
+  var prevBtn = $('.index-carousel-nav.prev');
+
+  var moveDistance;
+  var moved = 0;
+  var duration = 200;
+
+  carousel();
+
+  function carousel() {
+
+    windowWidth = $(window).width();
+    maxElements = Math.floor(windowWidth / elemFullWidth);
+    elemMargin = Math.round((windowWidth - (maxElements * elemWidth)) / (maxElements + 1));
+
+    while (windowWidth > ((maxElements * elemWidth) + ((maxElements + 1) * elemMargin))) {
+      elemMargin++;
     }
-    closeVideo()
+
+    element.css({ marginLeft: elemMargin });
+
+    moveDistance = elemWidth + elemMargin;
+
+    hideBtns()
+
   }
 
-  // replay the poster if it ends
-  document.getElementById("video1").addEventListener("ended", posterHandler, false);
-  function posterHandler(e) {
-    if (!e) {
-      e = window.event;
+  $(window).resize(function () {
+    carousel();
+    refreshPosition()
+  });
+
+  //Init touch swipe
+  panel.swipe({
+    triggerOnTouchEnd: true,
+    swipeStatus: swipeStatus,
+    allowPageScroll: "none",
+    threshold: 50
+  });
+
+  /**
+   * Catch each phase of the swipe.
+   * move : we drag the div.
+   * cancel : we animate back to where we were
+   * end : we animate to the next image
+   */
+  function swipeStatus(event, phase, direction, distance, fingers) {
+
+    //If we are moving before swipe, and we are going L or R, then manually drag the images
+    if (phase == "move" && (direction == "left" || direction == "right")) {
+
+      if (direction == "left" && moved != elemNum - maxElements)
+        dragPanel(-distance)
+
+      else if (direction == "right" && moved != 0)
+        dragPanel(distance)
+
+    } else if (phase == "cancel") {
+      refreshPosition()
+
+    } else if (phase == "end") {
+
+      if (direction == "right")
+        movePrev(distance)
+
+      else if (direction == "left")
+        moveNext(distance)
     }
-    playPoster()
   }
 
-  // open the trailer
-  function openVideo() {
-    $(".play-btn").addClass("animate-out");
-    $(".poster-wrapper").addClass("go-out-left");
-    $(".video-wrapper").removeClass("go-out-top opaque");
-    $(".dark-bg").removeClass("opaque");
-    $("body").addClass("darken");
+  nextBtn.on("click", function () {
+    moveNext();
+  });
 
-    var myVideo = document.getElementById("video2");
-    if (myVideo.paused)
-      myVideo.play();
-  }
+  prevBtn.on("click", function () {
+    movePrev();
+  });
 
-  // close the trailer
-  function closeVideo() {
-    $(".play-btn").removeClass("animate-out");
-    $(".poster-wrapper").removeClass("go-out-left");
-    $(".video-wrapper").addClass("go-out-top opaque");
-    $(".dark-bg").addClass("opaque");
-    $("body").removeClass("darken");
+  function moveNext(distance) {
 
-    var myVideo = document.getElementById("video2");
-    if (myVideo.played)
-      myVideo.pause();
-  }
-
-  // play the poster
-  function playPoster() {
-    var myVideo = document.getElementById("video1");
-    if (myVideo.paused)
-      myVideo.play();
-  }
-
-  // open more videos
-  function moreVideos() {
-    var element = $(".main-wrapper");
-    if (element.hasClass("more-video-closed")) {
-      $(element).removeClass("more-video-closed");
+    if (distance) {
+      moved = moved + Math.ceil(distance / elemWidth);
     } else {
-      $(element).addClass("more-video-closed");
+      moved = moved + 1;
+    }
+
+    if (moved <= elemNum - maxElements) {
+      var value = moved * -moveDistance;
+      panel.css({
+        "-webkit-transition-duration" : (duration/1000).toFixed(1) + "s",
+        "transition-duration" : (duration/1000).toFixed(1) + "s",
+        "-webkit-transform": "translate3d(" + value + "px,0,0)",
+        "-ms-transform": "translate3d(" + value + "px,0,0)",
+        "transform": "translate3d(" + value + "px,0,0)"
+      });
+    } else {
+      moved = elemNum - maxElements;
+      refreshPosition()
+    }
+
+    hideBtns()
+  }
+
+  function movePrev(distance) {
+
+    if (distance) {
+      moved = moved - Math.ceil(distance / elemWidth);
+    } else {
+      moved = moved - 1;
+    }
+
+    if (moved >= 0) {
+      var value = moved * -moveDistance;
+      panel.css({
+        "-webkit-transition-duration" : (duration/1000).toFixed(1) + "s",
+        "transition-duration" : (duration/1000).toFixed(1) + "s",
+        "-webkit-transform": "translate3d(" + value + "px,0,0)",
+        "-ms-transform": "translate3d(" + value + "px,0,0)",
+        "transform": "translate3d(" + value + "px,0,0)"
+      });
+    } else {
+      moved = 0;
+      refreshPosition()
+    }
+
+    hideBtns()
+  }
+
+  function refreshPosition() {
+    var value = moved * -moveDistance;
+    panel.css({
+      "-webkit-transition-duration" : (duration/1000).toFixed(1) + "s",
+      "transition-duration" : (duration/1000).toFixed(1) + "s",
+      "-webkit-transform": "translate3d(" + value + "px,0,0)",
+      "-ms-transform": "translate3d(" + value + "px,0,0)",
+      "transform": "translate3d(" + value + "px,0,0)"
+    });
+  }
+
+  function dragPanel(distance) {
+    var value = moved * -moveDistance + distance;
+    panel.css({
+      "-webkit-transition-duration" : "0s",
+      "transition-duration" : "0s",
+      "-webkit-transform": "translate3d(" + value + "px,0,0)",
+      "-ms-transform": "translate3d(" + value + "px,0,0)",
+      "transform": "translate3d(" + value + "px,0,0)"
+    });
+  }
+
+  function hideBtns() {
+    if (moved == 0) {
+      prevBtn.addClass("hidden")
+    } else if (moved == elemNum - maxElements) {
+      nextBtn.addClass("hidden")
+    } else {
+      prevBtn.removeClass("hidden");
+      nextBtn.removeClass("hidden");
     }
   }
+
+  //media handling
+
+  var posterBtn = $('#posterBtn');
+  var trailerBtn = $('#trailerBtn');
+  var posterWrapper = $('#posterWrapper');
+  var trailerWrapper = $('#trailerWrapper');
+  var darkBg = $('#darkBg');
+
+  posterBtn.on("click", function () {
+    if (posterBtn.hasClass('active') == false) {
+      posterBtn.addClass('active');
+      trailerBtn.removeClass('active');
+      posterWrapper.addClass('active');
+      trailerWrapper.removeClass('active');
+      darkBg.addClass('opaque');
+
+      var myVideo = document.getElementById("trailer");
+      if (myVideo.played)
+        myVideo.pause();
+    }
+  });
+
+  trailerBtn.on("click", function () {
+    if (trailerBtn.hasClass('active') == false) {
+      trailerBtn.addClass('active');
+      posterBtn.removeClass('active');
+      trailerWrapper.addClass('active');
+      posterWrapper.removeClass('active');
+      darkBg.removeClass('opaque');
+
+      var myVideo = document.getElementById("trailer");
+      if (myVideo.paused)
+        myVideo.play();
+    }
+  });
 
 });
