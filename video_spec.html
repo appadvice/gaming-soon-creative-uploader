@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GamingSoon Creatives Submission Information</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+
+    <script type="text/template" id="qq-template">
+        <div class="qq-uploader-selector qq-uploader">
+            <div class="qq-upload-button-selector qq-upload-button">
+                <div>Select Files</div>
+            </div>
+            <div class="qq-upload-drop-area-selector uploader-drop-zone">
+                <span class="drop-zone-text">Drop Files Here</span>
+                <ul class="qq-upload-list-selector qq-upload-list">
+                    <li class="file-container">
+                        <div class="qq-progress-bar-container-selector">
+                            <div class="qq-progress-bar-selector qq-progress-bar"></div>
+                        </div>
+                        <div class="file-info">
+                            <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                            <img class="qq-thumbnail-selector" qq-max-size="50" qq-server-scale>
+                            <span class="qq-upload-file-selector qq-upload-file"></span>
+                            <span class="qq-upload-size-selector qq-upload-size"></span>
+                        </div>
+                        <button class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</button>
+                        <button class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</button>
+                        <span class="qq-upload-status-text-selector qq-upload-status-text"></span>
+                        <a class="view-btn" target="_blank" style="display: none;">
+                            <input type="button" value="View">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <span class="qq-drop-processing-selector qq-drop-processing">
+                <span>Processing dropped files...</span>
+                <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+            </span>
+        </div>
+    </script>
+
+    <script>
+        var fineUploaderGlobals = {};
+    </script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/fineuploader-4.2.1.min.css" rel='stylesheet' type='text/css'>
+    <link href="stylesheets/custom.css" rel='stylesheet' type='text/css'>
+    <link href="stylesheets/stylesheet.css" rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Scripts required for the uploader -->
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="//sdk.amazonaws.com/js/aws-sdk-2.0.7.min.js"></script>
+    <script src="javascripts/s3.jquery.fineuploader.min.js"></script>
+    <script src="javascripts/aws-sdk-glue.js"></script>
+    <script src="javascripts/google-auth.js"></script>
+    <script src="javascripts/fineuploader-glue.js"></script>
+    <header>
+      <div class="inner">
+        <h1>GamingSoon Creatives</h1>
+        <h2>Recommended Trailer Video Encoding Spec</h2>
+        <a href="http://appadvice.com" class="button"><small>Part of</small>AppAdvice</a>
+      </div>
+    </header>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <div class="video_spec"> 
+						<h3>Container: .mp4</h3>
+						<ul>
+							<li>No Edit Lists (or you may lose AV sync)</li>
+							<li>moov atom at the front of the file (Fast Start)</li>
+						</ul>
+						<h3>Audio Codec: AAC-LC</h3>
+						<ul>
+							<li>Channels: Stereo or Stereo + 5.1</li>
+							<li>Sample rate 96khz or 48 khz</li>
+						</ul>
+						<h3>Video Codec: H.264</h3>
+						<ul>
+							<li>Progressive scan (no interlacing)</li>
+							<li>High Profile</li>
+							<li>2 consecutive B frames</li>
+							<li>Closed GOP. GOP of half the frame rate.</li>
+							<li>CABAC</li>
+							<li>Variable bitrate. No bitrate limit required, though we offer recommended bit rates below for reference</li>
+							<li>Chroma subsampling: 4:2:0</li>
+						</ul>
+						<h3>Resolutions and Bitrates</h3>
+						<table class="nice-table">
+							<tbody>
+								<tr>
+									<th>Type</th>
+									<th>Min-Video Bitrate</th>
+									<th>Max-Video Bitrate</th>
+									<th>Mono Audio Bitrate</th>
+									<th>Stereo Audio Bitrate</th>
+								</tr>
+								<tr>
+									<td>1080p</td>
+									<td>8,000 kbps</td>
+									<td>50,000 kbps</td>
+									<td>128 kbps</td>
+									<td>384 kbps</td>
+								</tr>
+								<tr>
+									<td>720p</td>
+									<td>5,000 kbps</td>
+									<td>30,000 kbps</td>
+									<td>128 kbps</td>
+									<td>384 kbps</td>
+								</tr>
+							</tbody>
+						</table><br/>
+						<p>A 16:9 aspect ratio is preferred. If you are uploading a non-16:9 file it will be processed and displayed correctly as well, with pillar boxes (black bars on the left and right) or letter boxes (black bars at the top and bottom) provided by the player. </p>
+					</div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="gaming_soon_resources/PosterSpec_V1.zip" class="button">
+            <small>Download</small>
+            Asset Spec
+          </a>
+          <p class="repo-owner">More info on spec available <a href="http://appadvice.com">here</a>.</p>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
