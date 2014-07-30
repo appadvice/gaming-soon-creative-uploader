@@ -292,7 +292,7 @@ BASIC LAYOUT
   height: 100%;
   top: 0;
   left: 0;
-  background-image: url("../assets/bg-pattern.png");
+  background-image: url("/assets/bg-pattern.png");
   background-repeat: repeat;
 }
 .index-carousel-panel {
