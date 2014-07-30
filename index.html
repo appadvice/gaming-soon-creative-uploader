@@ -15,7 +15,7 @@
 
 <!--menu bar-->
 <div class="menu-bar clearfix">
-  <a class="pull-left logo italic">GamingSOON</a>
+  <a class="logo italic">GamingSOON</a>
   <a class="italic" href="#">Latest Trailers</a>
   <a class="italic" href="#">Gaming Now</a>
   <a class="pull-right"><i class="fa fa-search"></i></a>
@@ -117,8 +117,8 @@
     <div class="media-menu-wrapper">
       <span class="media-menu-top">
         <button id="posterBtn" class="media-menu-element active">poster</button>
-        <button id="trailerBtn" class="media-menu-element">trailer</button>
-        <button id="gameplayBtn" class="media-menu-element">gameplay videos</button>
+        <button id="trailerBtn" class="media-menu-element need-bg start-trailer">trailer</button>
+        <button id="gameplayBtn" class="media-menu-element need-bg start-game-play">gameplay videos</button>
       </span>
       <div class="media-menu-bottom"></div>
     </div>
@@ -129,18 +129,76 @@
       <button><i class="fa fa-star"></i></button>
     </div>
   </div>
-  <div id="posterWrapper" class="media-wrapper active">
-    <div class="poster-wrapper animate">
-      <video id="poster" poster="images/poster.jpg" preload autoplay>
+  <div class="media-wrapper active">
+    <div class="poster-wrapper animate" style="background-image: url('images/poster.jpg')">
+      <video id="poster" poster="images/poster.jpg" preload autoplay loop>
         <source src="videos/Back_to_Bed_poster.mp4" type="video/mp4">
       </video>
     </div>
+    <button id="playBtn" class="play-btn"><i class="fa fa-play"></i> Watch trailer</button>
   </div>
-  <div id="trailerWrapper" class="media-wrapper">
+  <div class="media-wrapper">
     <div class="trailer-wrapper animate">
       <video id="trailer" preload controls>
         <source src="videos/Back_to_Bed_trailer.mp4" type="video/mp4">
       </video>
+    </div>
+  </div>
+  <div class="media-wrapper">
+    <div class="game-play-wrapper">
+      <button id="gamePlayPrev" class="game-play-btn prev"><i class="fa fa-chevron-left"></i></button>
+      <button id="gamePlayNext" class="game-play-btn next"><i class="fa fa-chevron-right"></i></button>
+      <div class="game-play-panel">
+        <div class="game-play-element active">
+          <video class="game-play-video" preload loop controls>
+            <source src="videos/gameplay/PickupApple_small.mp4" type="video/mp4">
+          </video>
+          <h3>Move apples around the house</h3>
+          <p>Apples are laying around to be carried to other parts of the Bob's house.</p>
+        </div>
+        <div class="game-play-element">
+          <video class="game-play-video" preload loop controls>
+            <source src="videos/gameplay/SaveSleepWalker_small.mp4" type="video/mp4">
+          </video>
+          <h3>Save the sleepwalking Bob</h3>
+          <p>The apples can change Bob's sleep walking path and prevent a tragic fall.</p>
+        </div>
+        <div class="game-play-element">
+          <video class="game-play-video" preload loop controls>
+            <source src="videos/gameplay/Getsleepwalkertobed_small.mp4" type="video/mp4">
+          </video>
+          <h3>Get Bob to bed!</h3>
+          <p>Bob's needs to get back to bed and you aid his sleepy rescue.</p>
+        </div>
+        <div class="game-play-element">
+          <video class="game-play-video" preload loop controls>
+            <source src="videos/gameplay/Whaleroadtracks_small.mp4" type="video/mp4">
+          </video>
+          <h3>Don't let Bob get killed</h3>
+          <p>A sleep walker's world is full of dangers that Bob's needs to be protected from.</p>
+        </div>
+        <div class="game-play-element">
+          <video class="game-play-video" preload loop controls>
+            <source src="videos/gameplay/WalkonWalls_small.mp4" type="video/mp4">
+          </video>
+          <h3>The stairs are not what they seem</h3>
+          <p>A sleep walker's world is not the 3D space of day life. The 'Escher stairs' can help you navigate.</p>
+        </div>
+        <div class="game-play-element">
+          <video class="game-play-video" preload loop controls>
+            <source src="videos/gameplay/Portals_small.mp4" type="video/mp4">
+          </video>
+          <h3>Think with Portals</h3>
+          <p>Quickly navigate the world with portals.</p>
+        </div>
+        <div class="game-play-element">
+          <video class="game-play-video" preload loop controls>
+            <source src="videos/gameplay/Dogsandfish_small.mp4" type="video/mp4">
+          </video>
+          <h3>These fish are made for walking</h3>
+          <p>When a path is not available, make one!</p>
+        </div>
+      </div>
     </div>
   </div>
   <div id="darkBg" class="dark-bg opaque"></div>

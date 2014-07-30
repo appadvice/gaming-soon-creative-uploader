@@ -6,7 +6,9 @@ $(document).ready(function () {
   });
 
 
+  //
   //index carousel
+  //
 
   var panel = $('.index-carousel-panel');
   var element = $('.index-carousel-element');
@@ -53,18 +55,12 @@ $(document).ready(function () {
   //Init touch swipe
   panel.swipe({
     triggerOnTouchEnd: true,
-    swipeStatus: swipeStatus,
-    allowPageScroll: "none",
+    swipeStatus: swipeStatusIndexCarousel,
     threshold: 50
   });
 
-  /**
-   * Catch each phase of the swipe.
-   * move : we drag the div.
-   * cancel : we animate back to where we were
-   * end : we animate to the next image
-   */
-  function swipeStatus(event, phase, direction, distance, fingers) {
+  // Catch each phase of the swipe
+  function swipeStatusIndexCarousel(event, phase, direction, distance, fingers) {
 
     //If we are moving before swipe, and we are going L or R, then manually drag the images
     if (phase == "move" && (direction == "left" || direction == "right")) {
@@ -179,40 +175,187 @@ $(document).ready(function () {
     }
   }
 
+  
+  //
   //media handling
+  //
 
-  var posterBtn = $('#posterBtn');
-  var trailerBtn = $('#trailerBtn');
-  var posterWrapper = $('#posterWrapper');
-  var trailerWrapper = $('#trailerWrapper');
+  var mediaBtns = $('.media-menu-element');
+  var mediaElements = $('.media-wrapper');
+  var mediaCount = mediaBtns.length;
   var darkBg = $('#darkBg');
+  var trailerVideo = document.getElementById("trailer");
+  var playBtn = $('#playBtn');
 
-  posterBtn.on("click", function () {
-    if (posterBtn.hasClass('active') == false) {
-      posterBtn.addClass('active');
-      trailerBtn.removeClass('active');
-      posterWrapper.addClass('active');
-      trailerWrapper.removeClass('active');
-      darkBg.addClass('opaque');
+  if (mediaCount != mediaElements.length) {
+    alert("The number of media buttons are not match the number of media wrappers!")
+  }
 
-      var myVideo = document.getElementById("trailer");
-      if (myVideo.played)
-        myVideo.pause();
+  // trigger click on play button
+  playBtn.on("click", function(){
+    var i;
+    for (i = 0; i < mediaCount; ++i) {
+      if (mediaBtns.eq(i).hasClass("start-trailer")) {
+        mediaBtns.eq(i).trigger("click");
+      }
     }
   });
 
-  trailerBtn.on("click", function () {
-    if (trailerBtn.hasClass('active') == false) {
-      trailerBtn.addClass('active');
-      posterBtn.removeClass('active');
-      trailerWrapper.addClass('active');
-      posterWrapper.removeClass('active');
-      darkBg.removeClass('opaque');
+  mediaBtns.on("click", function(){
+    var clicked = $(this);
+    var index = clicked.index();
 
-      var myVideo = document.getElementById("trailer");
-      if (myVideo.paused)
-        myVideo.play();
+    // add active class to the actual button, removing from the other
+    var i;
+    for (i = 0; i < mediaCount; ++i) {
+      if (mediaBtns.eq(i).hasClass("active")) {
+        mediaBtns.removeClass("active");
+      }
+    }
+    mediaBtns.eq(index).addClass("active");
+
+    // add active class to the matching media-wrapper, removing from the other
+    var j;
+    for (j = 0; j < mediaCount; ++j) {
+      if (mediaElements.eq(j).hasClass("active")) {
+        mediaElements.removeClass("active");
+      }
+    }
+    mediaElements.eq(index).addClass("active");
+
+    // add bg if needed
+    if (clicked.hasClass("need-bg") && darkBg.hasClass("opaque")) {
+      darkBg.removeClass("opaque");
+    } else if (!clicked.hasClass("need-bg") && !darkBg.hasClass("opaque")) {
+      darkBg.addClass("opaque");
+    }
+
+    // start trailer if needed
+    if (clicked.hasClass("start-trailer")) {
+      startTrailer();
+    } else if (!clicked.hasClass("start-trailer")) {
+      stopTrailer();
+    }
+
+    // start game play if needed
+    if (clicked.hasClass("start-game-play")) {
+      playGamePlayVideo("play", gamePlayMoved);
+    } else if (!clicked.hasClass("start-game-play")) {
+      playGamePlayVideo("stop");
     }
   });
+
+  function startTrailer() {
+    if (trailerVideo.paused) {
+      trailerVideo.play();
+    }
+  }
+
+  function stopTrailer() {
+    if (trailerVideo.played) {
+      trailerVideo.pause();
+    }
+  }
+
+
+  //
+  // gameplay carousel
+  //
+
+  var gamePlayPrev = $('#gamePlayPrev');
+  var gamePlayNext = $('#gamePlayNext');
+  var gamePlayPanel = $('.game-play-panel');
+  var gamePlayElement = $('.game-play-element');
+  var gamePlayCount = gamePlayElement.length;
+  var gamePlayElementWidth = gamePlayElement.outerWidth(true);
+  var gamePlayVideos = $('.game-play-video');
+  var gamePlayMoved = 0;
+  var gamePlayDuration = 500;
+
+  if (gamePlayCount != gamePlayVideos.length) {
+    alert("The number of game play videos are not match the number of game play elements!")
+  }
+
+  gamePlayPrev.on("click", function(){
+    gamePlayGoPrev()
+  });
+
+  gamePlayNext.on("click", function(){
+    gamePlayGoNext()
+  });
+
+  //Init touch swipe
+  gamePlayPanel.swipe({
+    triggerOnTouchEnd: true,
+    swipeStatus: swipeStatusGamePlay,
+    threshold: 50
+  });
+
+  // Catch each phase of the swipe
+  function swipeStatusGamePlay(event, phase, direction, distance, fingers) {
+
+    //If we are moving before swipe, and we are going L or R, then manually drag the images
+    if (phase == "move" && (direction == "left" || direction == "right")) {
+
+      if (direction == "left" && gamePlayMoved < gamePlayCount - 1)
+        moveGamePlayPanel(gamePlayMoved, -distance, 0)
+
+      else if (direction == "right" && gamePlayMoved > 0)
+        moveGamePlayPanel(gamePlayMoved, distance, 0)
+
+    } else if (phase == "cancel") {
+      moveGamePlayPanel(gamePlayMoved, 0, gamePlayDuration)
+
+    } else if (phase == "end") {
+
+      if (direction == "right") {
+        gamePlayGoPrev()
+
+      }  else if (direction == "left") {
+        gamePlayGoNext()
+      }
+    }
+  }
+
+  function gamePlayGoPrev() {
+    if (gamePlayMoved > 0) {
+      gamePlayMoved = gamePlayMoved - 1;
+    }
+    moveGamePlayPanel(gamePlayMoved, 0, gamePlayDuration)
+  }
+
+  function gamePlayGoNext() {
+    if (gamePlayMoved < gamePlayCount - 1) {
+      gamePlayMoved = gamePlayMoved + 1;
+    }
+    moveGamePlayPanel(gamePlayMoved, 0, gamePlayDuration)
+  }
+
+  function moveGamePlayPanel(index, distance, duration) {
+    var value = index * -gamePlayElementWidth - index * 3 + distance;
+    gamePlayPanel.css({
+      "-webkit-transition-duration" : (duration/1000).toFixed(1) + "s",
+      "transition-duration" : (duration/1000).toFixed(1) + "s",
+      "-webkit-transform": "translate3d(" + value + "px,0,0)",
+      "-ms-transform": "translate3d(" + value + "px,0,0)",
+      "transform": "translate3d(" + value + "px,0,0)"
+    });
+    gamePlayElement.removeClass("active");
+    gamePlayElement.eq(index).addClass("active");
+    playGamePlayVideo("play", index)
+  }
+
+  function playGamePlayVideo(status, index) {
+    var i;
+    for (i = 0; i < gamePlayCount; ++i) {
+      if (gamePlayVideos[i].played) {
+        gamePlayVideos[i].pause();
+        gamePlayVideos[i].currentTime = 0;
+      }
+    }
+    if (status == "play") {
+      gamePlayVideos[index].play();
+    }
+  }
 
 });
