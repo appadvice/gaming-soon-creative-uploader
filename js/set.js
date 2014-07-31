@@ -95,9 +95,9 @@ $(document).ready(function () {
   function moveNext(distance) {
 
     if (distance) {
-      moved = moved + Math.ceil(distance / elemWidth);
+      moved += Math.ceil(distance / elemWidth);
     } else {
-      moved = moved + 1;
+      moved += 1;
     }
 
     if (moved <= elemNum - maxElements) {
@@ -120,9 +120,9 @@ $(document).ready(function () {
   function movePrev(distance) {
 
     if (distance) {
-      moved = moved - Math.ceil(distance / elemWidth);
+      moved -= Math.ceil(distance / elemWidth);
     } else {
-      moved = moved - 1;
+      moved -= 1;
     }
 
     if (moved >= 0) {
@@ -175,7 +175,7 @@ $(document).ready(function () {
     }
   }
 
-  
+
   //
   //media handling
   //
@@ -193,8 +193,7 @@ $(document).ready(function () {
 
   // trigger click on play button
   playBtn.on("click", function(){
-    var i;
-    for (i = 0; i < mediaCount; ++i) {
+    for (var i = 0; i < mediaCount; ++i) {
       if (mediaBtns.eq(i).hasClass("start-trailer")) {
         mediaBtns.eq(i).trigger("click");
       }
@@ -206,8 +205,7 @@ $(document).ready(function () {
     var index = clicked.index();
 
     // add active class to the actual button, removing from the other
-    var i;
-    for (i = 0; i < mediaCount; ++i) {
+    for (var i = 0; i < mediaCount; ++i) {
       if (mediaBtns.eq(i).hasClass("active")) {
         mediaBtns.removeClass("active");
       }
@@ -215,8 +213,7 @@ $(document).ready(function () {
     mediaBtns.eq(index).addClass("active");
 
     // add active class to the matching media-wrapper, removing from the other
-    var j;
-    for (j = 0; j < mediaCount; ++j) {
+    for (var j = 0; j < mediaCount; ++j) {
       if (mediaElements.eq(j).hasClass("active")) {
         mediaElements.removeClass("active");
       }
@@ -243,6 +240,10 @@ $(document).ready(function () {
     } else if (!clicked.hasClass("start-game-play")) {
       playGamePlayVideo("stop");
     }
+
+    // call media arrow indicator
+    getDistance(index, mediaMenuLineDuration);
+
   });
 
   function startTrailer() {
@@ -257,9 +258,54 @@ $(document).ready(function () {
     }
   }
 
+  // media menu arrow indicator
+
+  var mediaMenuLine = $(".media-menu-bottom");
+  var mediaMenuLineDuration = 500;
+
+  getDistance(0,0);
+
+  function animateLine(distance, duration) {
+    mediaMenuLine.css({
+      "-webkit-transition-duration" : (duration/1000).toFixed(1) + "s",
+      "transition-duration" : (duration/1000).toFixed(1) + "s",
+      "-webkit-transform": "translate3d(" + distance + "px,0,0)",
+      "-ms-transform": "translate3d(" + distance + "px,0,0)",
+      "transform": "translate3d(" + distance + "px,0,0)"
+    });
+  }
+
+  function getDistance(index, duration) {
+    //total width
+    var mediaBtnWidth = mediaBtns.map(function(){
+      return $(this).outerWidth();
+    }).get();
+
+    var mediaBtnTotalWidth = 0;
+    for (var i = 0; i < mediaBtnWidth.length; i++) {
+      mediaBtnTotalWidth += mediaBtnWidth[i] << 0;
+    }
+
+    //arrow width
+    var mediaMenuArrowWidth = $(".arrow").outerWidth();
+
+    //distance
+    var startDistance = 0;
+    for (var j = 0; j <= index; j++) {
+      if (j == index) {
+        startDistance += Math.round(mediaBtnWidth[j]) / 2 - Math.round(mediaMenuArrowWidth / 2);
+      } else {
+        startDistance += mediaBtnWidth[j];
+      }
+    }
+    startDistance -= mediaBtnTotalWidth;
+
+    animateLine(startDistance, duration)
+  }
+
 
   //
-  // gameplay carousel
+  // game play carousel
   //
 
   var gamePlayPrev = $('#gamePlayPrev');
@@ -319,14 +365,14 @@ $(document).ready(function () {
 
   function gamePlayGoPrev() {
     if (gamePlayMoved > 0) {
-      gamePlayMoved = gamePlayMoved - 1;
+      gamePlayMoved -= 1;
     }
     moveGamePlayPanel(gamePlayMoved, 0, gamePlayDuration)
   }
 
   function gamePlayGoNext() {
     if (gamePlayMoved < gamePlayCount - 1) {
-      gamePlayMoved = gamePlayMoved + 1;
+      gamePlayMoved += 1;
     }
     moveGamePlayPanel(gamePlayMoved, 0, gamePlayDuration)
   }
@@ -346,8 +392,7 @@ $(document).ready(function () {
   }
 
   function playGamePlayVideo(status, index) {
-    var i;
-    for (i = 0; i < gamePlayCount; ++i) {
+    for (var i = 0; i < gamePlayCount; ++i) {
       if (gamePlayVideos[i].played) {
         gamePlayVideos[i].pause();
         gamePlayVideos[i].currentTime = 0;
@@ -357,5 +402,53 @@ $(document).ready(function () {
       gamePlayVideos[index].play();
     }
   }
+
+
+  //
+  // social bar
+  //
+
+  var socialBtn = $('#socialBtn');
+  var socialBar = $('.social-wrapper');
+
+  socialBtn.on("click", function() {
+    if (socialBar.hasClass("closed")) {
+      socialBar.removeClass("closed");
+    } else {
+      socialBar.addClass("closed");
+    }
+  });
+
+
+  //
+  // menu bar
+  //
+
+  var menuBar = $(".menu-bar");
+  var scrollTop = $(window).scrollTop();
+  var limitElement = $(".main-header-wrapper");
+  var limit = limitElement.height() + limitElement.offset().top;
+
+  setMenu();
+
+  function setMenu() {
+    if (scrollTop > limit && !menuBar.hasClass("fixed")) {
+      menuBar.addClass("fixed come-down")
+    } else if (scrollTop <= limit && menuBar.hasClass("fixed")) {
+      menuBar.removeClass("come-down");
+      menuBar.addClass("go-up");
+      setTimeout(function(){
+        menuBar.removeClass("fixed go-up")}, 500);
+    }
+  }
+
+  $(window).scroll(function(){
+    scrollTop = $(window).scrollTop();
+    setMenu()
+  });
+
+  $(window).resize(function(){
+    limit = limitElement.height() + limitElement.offset().top;
+  });
 
 });

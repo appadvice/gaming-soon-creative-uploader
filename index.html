@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
   <title>GamingSOON</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,900,900italic|Roboto+Slab:100' rel='stylesheet' type='text/css'>  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/main.css?v=1.02" rel="stylesheet">
+  <link href="css/main.css?v=1.03" rel="stylesheet">
 </head>
 <body>
 
@@ -98,7 +98,7 @@
 <!--main header-->
 <div class="main-header-wrapper" style="background-image: url('images/horizontal-poster.jpg')">
   <div class="main-header-data-wrapper clearfix">
-    <h1 class="game-title"><span>Back to Bed</span></h1>
+    <div class="game-title text-center"><h1 class="inline-block">Back to Bed</h1></div>
     <div class="score-main-wrapper">
       <div class="view-count text-right"><i class="fa fa-eye"></i> 120 498</div>
       <div class="score-bar-wrapper">
@@ -114,19 +114,25 @@
         <span class="full">9</span><span class="residue">.3152</span>
       </div>
     </div>
-    <div class="media-menu-wrapper">
-      <span class="media-menu-top">
-        <button id="posterBtn" class="media-menu-element active">poster</button>
-        <button id="trailerBtn" class="media-menu-element need-bg start-trailer">trailer</button>
-        <button id="gameplayBtn" class="media-menu-element need-bg start-game-play">gameplay videos</button>
-      </span>
-      <div class="media-menu-bottom"></div>
+    <div class="media-menu-wrapper text-center">
+      <div class="media-menu">
+        <div class="media-menu-top">
+          <button class="media-menu-element active">poster</button>
+          <button class="media-menu-element need-bg start-trailer">trailer</button>
+          <button class="media-menu-element need-bg start-game-play">gameplay videos</button>
+        </div>
+        <div class="media-menu-bottom">
+          <span class="media-menu-line line"></span><!--
+          --><span class="media-menu-line arrow"></span><!--
+          --><span class="media-menu-line line"></span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="main-header-spaceholder">
     <div class="other-actions">
-      <button><i class="fa fa-share-alt"></i></button>
-      <button><i class="fa fa-star"></i></button>
+      <button id="socialBtn"><i class="fa fa-share-alt"></i></button>
+      <button id="favoriteBtn"><i class="fa fa-star"></i></button>
     </div>
   </div>
   <div class="media-wrapper active">
@@ -205,13 +211,25 @@
 </div>
 <!--main header end-->
 
+<!--social bar-->
+<div class="social-wrapper text-center closed">
+  <span>Share this with your friends via</span>
+  <span>
+    <button><i class="fa fa-facebook"></i></button>
+    <button><i class="fa fa-twitter"></i></button>
+    <button><i class="fa fa-google-plus"></i></button>
+    <button><i class="fa fa-tumblr"></i></button>
+    <button><i class="fa fa-pinterest"></i></button>
+    <button><i class="fa fa-reddit"></i></button>
+  </span>
+</div>
+<!--social bar end-->
+
 <!--info bar-->
 <div class="info-bar-wrapper">
-  <div class="info-bar-element info-bar-button">
-    <a href="#">
-      <span class="info-type text-left">Get it from</span>
-      <span class="info">App Store</span>
-    </a>
+  <div class="info-bar-element info-bar-outline">
+      <span class="info-type text-left">Release date</span>
+      <span class="info">August 2014</span>
   </div>
   <div class="info-bar-element">
     <span class="info-type">Genre</span>
@@ -224,19 +242,6 @@
   <div class="info-bar-element">
     <span class="info-type">Requirement(s)</span>
     <span class="info">iOS 6+</span>
-  </div>
-  <div class="info-bar-element">
-    <span class="info-type">File Size</span>
-    <span class="info">31 Mb</span>
-  </div>
-  <div class="info-bar-element">
-    <span class="info-type">Version</span>
-    <span class="info">v1.13</span>
-  </div>
-  <div class="info-bar-element">
-    <span class="info-type">Price</span>
-    <span class="info">Free</span>
-    <span class="other-info">inapp purchases</span>
   </div>
 </div>
 <!--info bar end-->
@@ -402,7 +407,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/jquery.touchSwipe.min.js"></script>
 <script src="js/fastclick.js"></script>
-<script src="js/set.js?v=1.02"></script>
+<script src="js/set.js?v=1.03"></script>
 
 </body>
 </html>
