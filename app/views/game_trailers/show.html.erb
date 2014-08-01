@@ -1,0 +1,184 @@
+<!--menu bar-->
+<div class="menu-bar clearfix">
+  <a class="pull-left logo italic" href="/trailers">GamingSOON</a>
+  <a class="italic" href="/trailers">Latest Trailers</a>
+  <a class="italic" href="#">Gaming Now</a>
+  <a class="pull-right"><i class="fa fa-search"></i></a>
+</div>
+<!--menu bar end-->
+
+<!--carousel-->
+<div class="index-carousel-wrapper">
+  <div class="index-carousel-wrapper-bg"></div>
+  <div class="index-carousel-panel clearfix">
+		<% @index['index'].each do |index| %>
+			<div class="index-carousel-element">
+	      <div class="poster-bg relative" style="background-image: url('<%= index['ipad_thumb'] %>')">
+	        <div class="score-circle-wrapper score-circle-wrapper-50">
+	          <div class="score-circle-bg score-circle-bg-9"></div>
+	          <div class="score-circle-mask">9.3</div>
+	        </div>
+	      </div>
+	      <div class="index-carousel-title"><a href="/trailers/<%= index['permalink'].split('=').last%>">Some Game</a></div>
+	    </div>
+		<% end%>
+  </div>
+  <button class="index-carousel-nav prev"><i class="fa fa-chevron-left"></i></button>
+  <button class="index-carousel-nav next"><i class="fa fa-chevron-right"></i></button>
+</div>
+<!--carousel end-->
+
+<!--main header-->
+<div class="main-header-wrapper" style="background-image: url('<%= @game['creatives']['background_sheet']['orginal']['href'] %>')">
+  <div class="main-header-data-wrapper clearfix">
+    <h1 class="game-title"><span><%= @game['game_title']%></span></h1>
+    <div class="score-main-wrapper">
+      <div class="view-count text-right"><i class="fa fa-eye"></i> 120 498</div>
+      <div class="score-bar-wrapper">
+        <div class="score-bar-out">
+          <div class="score-bar-in" style="width: 90%"></div>
+        </div>
+      </div>
+      <div class="score-actions-wrapper text-right">
+        <button class="rate rate-up">+</button><span> 1 216</span>
+        <button class="rate rate-down">-</button><span> 108</span>
+      </div>
+      <div class="score-wrapper">
+        <span class="full">9</span><span class="residue">.3152</span>
+      </div>
+    </div>
+    <div class="media-menu-wrapper">
+      <span class="media-menu-top">
+        <button id="posterBtn" class="media-menu-element active">poster</button>
+        <button id="trailerBtn" class="media-menu-element">trailer</button>
+        <button id="gameplayBtn" class="media-menu-element">gameplay videos</button>
+      </span>
+      <div class="media-menu-bottom"></div>
+    </div>
+  </div>
+  <div class="main-header-spaceholder">
+    <div class="other-actions">
+      <button><i class="fa fa-share-alt"></i></button>
+      <button><i class="fa fa-star"></i></button>
+    </div>
+  </div>
+  <div id="posterWrapper" class="media-wrapper active">
+    <div class="poster-wrapper animate">
+      <video id="poster" poster="<%= @game['creatives']['one_sheet']['mediumretina']['href'] %>" preload autoplay>
+				<% if @id == 'back-to-bed' %>
+        	<source src="/assets/Back_to_Bed_poster.mp4" type="video/mp4">
+				<% end %>
+      </video>
+    </div>
+  </div>
+  <div id="trailerWrapper" class="media-wrapper">
+    <div class="trailer-wrapper animate">
+      <video id="trailer" preload controls>
+        <source src="/assets/Back_to_Bed_trailer.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div id="darkBg" class="dark-bg opaque"></div>
+</div>
+<!--main header end-->
+
+<!--info bar-->
+<div class="info-bar-wrapper">
+  <div class="info-bar-element info-bar-button">
+		<% if @game['appid'] %>
+    	<a href="http://getapp.cc/app/<%= @game['appid'] %>">
+    	  <span class="info-type text-left">Get it from</span>
+    	  <span class="info">App Store</span>
+    	</a>
+		<% end %>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">Genre</span>
+    <span class="info"><%= @game['app_meta']['genres'].first && @game['app_meta']['genres'].first['name'] %></span>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">Platform(s)</span>
+    <span class="info"><%= @game['app_meta']['supported_platforms'].join(', ') %></span>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">Requirement(s)</span>
+    <span class="info"><%= @game['app_meta']['os_requirements'] %></span>
+  </div>
+  <div class="info-bar-element">
+    <span class="info-type">Price</span>
+    <span class="info"><%= @game['app_meta']['display_price'] %></span>
+		<% if @game['app_meta']['has_iap'] %>
+			<span class="other-info">inapp purchases</span>
+		<% end %>
+  </div>
+</div>
+<!--info bar end-->
+
+<!--main content-->
+<div class="main-content-wrapper clearfix">
+  <div class="left-col">
+    <div class="section">
+      <h3>About the Game</h3>
+      <span class="app-logo pull-left"></span>
+      <p><%= @game['synopsis'] %></p>
+    </div>
+    <div class="divider">
+      <span>more <i class="fa fa-angle-down"></i></span>
+    </div>
+  </div>
+  <div class="right-col">
+    <div class="section outline">
+      <div class="developer-info-left">
+				<% if @id == 'back-to-bed' %>
+        	<span class="developer-logo">
+	          <img src="/assets/logo.png">
+	        </span>
+				<% end %>
+				<% if !@game['developer']['url'].blank? %>
+					<a class="developer-sites-icon" target="_blank" href="<%= @game['developer']['url'] %>"><i class="fa fa-globe"></i></a>
+				<% end %>
+				<% if !@game['developer']['facebook'].blank? %>
+					<a class="developer-sites-icon" target="_blank" href="<%= @game['developer']['facebook'] %>"><i class="fa fa-facebook"></i></a>
+				<% end %>
+				<% if !@game['developer']['twitter'].blank? %>
+					<a class="developer-sites-icon" target="_blank" href="http://twitter.com/<%= @game['developer']['twitter'].gsub('@','') %>"><i class="fa fa-twitter"></i></a>
+				<% end %>
+				<% if !@game['developer']['google_plus'].blank? %>
+					<a class="developer-sites-icon" target="_blank" href="<%= @game['developer']['google_plus'] %>"><i class="fa fa-googleplus"></i></a>
+				<% end %>
+      </div>
+      <div class="developer-info-right">
+        <span class="info-type">Developer</span>
+        <h3><%= @game['developer']['name'] %></h3>
+        <p><%= @game['developer']['description'] %></p>
+      </div>
+      <div class="divider clear">
+        <span>from the developers</span>
+      </div>
+      <div>
+				<% @index['index'].shuffle[0,2].each do |index| %>			
+					<div class="poster-bg tiny relative inline-block" style="background-image: url('<%= index['ipad_thumb'] %>')">
+	          <div class="score-circle-wrapper score-circle-wrapper-30">
+	            <div class="score-circle-bg score-circle-bg-9"></div>
+	            <div class="score-circle-mask">9.3</div>
+	          </div>
+	        </div>
+				<% end %>
+      </div>
+    </div>
+  </div>
+  <div class="full-width">
+    <div class="section outline text-center">
+      <h3>Similar Games</h3>
+			<% @index['index'].shuffle[0,5].each do |index| %>			
+				<div class="poster-bg small relative text-left inline-block" style="background-image: url('<%= index['ipad_thumb'] %>')">
+	        <div class="score-circle-wrapper score-circle-wrapper-50">
+	          <div class="score-circle-bg score-circle-bg-9"></div>
+	          <div class="score-circle-mask">9.3</div>
+	        </div>
+	      </div>
+			<% end %>
+    </div>
+  </div>
+</div>
+<!--main content end-->

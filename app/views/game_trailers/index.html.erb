@@ -1,0 +1,8 @@
+<ul>
+<% @index['index'].each do |index| %>
+	<li>
+		<a href="/trailers/<%= index['permalink'].split('=').last%>"><img src="<%= index['ipad_thumb']%>"/></a>
+		<a href="/trailers/<%= index['permalink'].split('=').last%>"><%= index['post_title']%></a>
+	</li>
+<% end%>
+</ul>
