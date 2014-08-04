@@ -15,6 +15,8 @@ $('#shareBtn').on('click', function () {
 
 // trailer video
 
+var isMobile = (/iPhone|iPod|iPad|Android|BlackBerry/).test(navigator.userAgent);
+
 var playBtn = $('#playBtn');
 var trailerWrapper = $('#trailerWrapper');
 var darkBg = $('#darkBg');
@@ -33,12 +35,17 @@ function trailer(action) {
     playBtn.addClass("active");
     trailerWrapper.addClass("active");
     darkBg.removeClass("opaque");
-    player.playVideo();
+    if (!isMobile) {
+      player.playVideo();
+    }
   } else if (action == "stop") {
     playBtn.removeClass("active");
     trailerWrapper.removeClass("active");
     darkBg.addClass("opaque");
-    player.stopVideo();
+    if (!isMobile) {
+      player.stopVideo();
+      player.seekTo(0);
+    }
   }
 }
 
@@ -68,6 +75,5 @@ function onYouTubeIframeAPIReady() {
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
     trailer("stop");
-    player.seekTo(0);
   }
 }
